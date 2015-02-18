@@ -1,4 +1,4 @@
-<<<<<<< HEAD:application/models/colores.php
+
 <?php
 
 class Colores extends CI_Model {
