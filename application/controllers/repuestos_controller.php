@@ -7,7 +7,7 @@ class Repuestos_Controller extends CI_Controller {
     }
     
     function index(){
-        $this->load->model('repuestos');
+        $this->load->model('Repuestos');
         $r = $this->repuestos->listar();
          echo "<pre>";
         print_r($r->result_array());

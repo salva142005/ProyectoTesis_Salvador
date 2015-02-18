@@ -7,7 +7,7 @@ class Servicios_Controller extends CI_Controller {
     }
     
     function index(){
-        $this->load->model('servicios');
+        $this->load->model('Servicios');
         $r = $this->servicios->listar();
          echo "<pre>";
         print_r($r->result_array());

@@ -7,7 +7,7 @@ class Colores_Controller extends CI_Controller {
     }
     
     function index(){
-        $this->load->model('colores');
+        $this->load->model('Colores');
         $r = $this->colores->listar();
          echo "<pre>";
         print_r($r->result_array());

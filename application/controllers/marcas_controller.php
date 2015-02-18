@@ -7,7 +7,7 @@ class Marcas_Controller extends CI_Controller {
     }
     
     function index(){
-        $this->load->model('marcas');
+        $this->load->model('Marcas');
         $r = $this->marcas->listar();
          echo "<pre>";
         print_r($r->result_array());

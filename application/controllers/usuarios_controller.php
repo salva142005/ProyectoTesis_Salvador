@@ -7,7 +7,7 @@ class Usuarios_Controller extends CI_Controller {
     }
     
     function index(){
-        $this->load->model('usuarios');
+        $this->load->model('Usuarios');
         $r = $this->usuarios->listar();
          echo "<pre>";
         print_r($r->result_array());

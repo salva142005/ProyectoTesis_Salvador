@@ -7,12 +7,10 @@ class Equipos_Controller extends CI_Controller {
     }
     
     function index(){
-        $this->load->model('equipos');
+        $this->load->model('Equipos');
         $r = $this->equipos->listar();
          echo "<pre>";
         print_r($r->result_array());
        
     }
 }
-
-//prueba modificacion git desde netbeans
