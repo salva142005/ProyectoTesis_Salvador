@@ -1,6 +1,6 @@
 <?php
 
-class Colores extends CI_Model {
+class Color extends CI_Model {
 
     var $id;
     var $nombre;

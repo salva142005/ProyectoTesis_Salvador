@@ -1,6 +1,6 @@
 <?php
 
-class Repuestos extends CI_Model {
+class Repuesto extends CI_Model {
 
     var $id;
     var $nombre;
