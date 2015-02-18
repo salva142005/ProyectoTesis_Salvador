@@ -1,4 +1,4 @@
-<<<<<<< HEAD:application/models/equipos.php
+
 <?php
 
 class Equipos extends CI_Model {
