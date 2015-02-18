@@ -14,3 +14,5 @@ class Equipos_Controller extends CI_Controller {
        
     }
 }
+
+//prueba modificacion git desde netbeans
