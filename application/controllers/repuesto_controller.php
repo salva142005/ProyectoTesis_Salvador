@@ -37,3 +37,4 @@ class Repuesto_Controller extends CI_Controller {
          $this->Repuesto->delete();
          $this->listar();
     } 
+        }
