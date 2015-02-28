@@ -18,9 +18,19 @@ class Home_Controller extends CI_Controller{
     }
     
     function index(){
+         $this->load->model('Home_Controller');
+        $r = $this->Home_Controller->listar();
+         echo "<pre>";
+        print_r($r->result_array());
         
     }
+    function listar(){}
     
+    function crear(){}
+    
+    function modificar($id){}
+    
+    function eliminar($id){}
     
     
 }
