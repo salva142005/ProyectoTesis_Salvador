@@ -1,6 +1,9 @@
 <?php
 
 class Modelo_Controller extends CI_Controller {
+    
+    static $view_folder = "modelo";
+}
    
     function __construct() {
         parent::__construct();
@@ -13,11 +16,25 @@ class Modelo_Controller extends CI_Controller {
         print_r($r->result_array());
        
     }
-    function listar(){}
+ function listar(){
+        $data['modelos'] = $this->modelo->get_modelos();
+        $this->load->view(self::$view_folder.'/listar', $data);
+    }
     
-    function crear(){}
+    function crear(){
+        $this->modelo->set_nombre('Verde Olivo');
+        $this->modelo->insert();
+    }
     
-    function modificar($id){}
+    function modificar($id){
+        $this->modelo->set_id($id);
+        $this->modelo->set_nombre('Amarillo Pollito');
+        $this->modelo->update();
+        
+    }
     
-    function eliminar($id){}
-}
+    function eliminar($id){
+         $this->modelo->set_id($id);
+         $this->modelo->delete();
+         $this->listar();
+    } 
