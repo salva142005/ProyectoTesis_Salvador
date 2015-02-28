@@ -44,20 +44,24 @@ class Color extends CI_Model {
     function set_modificado($modificado) {
         $this->modificado = $modificado;
     }
-
-    function insert() {
-        
+    
+    function get_colores(){
+        return $this->db->get(self::$tabla)->result();
     }
 
+    function insert() {
+        $this->db->set($this);
+        $this->db->insert(self::$tabla);
+    }
+    
     function update() {
-        
+        $this->db->set($this);
+        $this->db->where('id', $this->id);
+        $this->db->update(self::$tabla);
     }
 
     function delete() {
-        
-    }
-    function get_object() {
-        return $this;
+         $this->db->delete(self::$tabla,array('id'=>$this->id));
     }
 
 }
