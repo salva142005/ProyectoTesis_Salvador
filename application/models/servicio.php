@@ -1,6 +1,6 @@
 <?php
 
-class Servicios extends CI_Model {
+class Servicio extends CI_Model {
 
     var $id;
     var $descripcion;

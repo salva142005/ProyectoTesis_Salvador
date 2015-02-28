@@ -1,7 +1,7 @@
 
 <?php
 
-class Equipos extends CI_Model {
+class Equipo extends CI_Model {
 
     var $id;
     var $nombre;
