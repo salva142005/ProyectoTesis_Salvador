@@ -10,7 +10,7 @@ class Color_Controller extends CI_Controller {
     }
     
     function index(){
-        
+        $this->listar();
     }
     
     function listar(){

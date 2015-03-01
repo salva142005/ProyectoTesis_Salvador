@@ -12,16 +12,13 @@
  * @author Raúl
  */
 class Home_Controller extends CI_Controller{
-    
-    function __construct() {
+    static $view_folder='home';
+            function __construct() {
         parent::__construct();
     }
     
     function index(){
-         $this->load->model('Home_Controller');
-        $r = $this->Home_Controller->listar();
-         echo "<pre>";
-        print_r($r->result_array());
+       $this->load->view(self::$view_folder.'/index');
         
     }
    function listar(){
