@@ -20,25 +20,23 @@ class Color_Controller extends CI_Controller {
     }
     
     function crear(){
-       
         $this->load->view(self::$view_folder.'/crear');
     }
     
-    function request($id = null){
-        if ($id == null){
-            $this->Color->set_nombre($this->input->post('nombre'));
-            $this->Color->insert();
-            redirect(base_url("index.php/color_controller/listar"));
-        } else {
-            
-        }
-    }
-        
     function modificar($id){
-        $this->Color->set_id($id);
-        $this->Color->set_nombre('Amarillo Pollito');
-        $this->Color->update();
-        
+        $data['color']=$this->Color->get_color_x_id($id);
+        $this->load->view(self::$view_folder.'/modificar', $data);
+    }
+    
+    function request($id = null){
+        $this->Color->set_nombre($this->input->post('nombre'));
+        if ($id == null){
+            $this->Color->insert(); 
+        } else {
+           $this->Color->set_id($id);
+           $this->Color->update();
+        }
+        redirect(base_url("index.php/color_controller/listar"));
     }
     
     function eliminar($id){
