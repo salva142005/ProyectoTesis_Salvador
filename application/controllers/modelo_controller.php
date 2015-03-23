@@ -37,6 +37,7 @@ class Modelo_Controller extends CI_Controller {
     }
 
     function modificar($id) {
+        $data['marcas'] = $this->get_marcas();
         $data['modelo']=$this->Modelo->get_modelo_x_id($id);
         $this->load->view(self::$view_folder.'/modificar', $data);
     }
