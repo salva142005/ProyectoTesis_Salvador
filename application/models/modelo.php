@@ -1,4 +1,3 @@
-<<<<<<< HEAD:application/models/modelos.php
 <?php
 
 class Modelo extends CI_Model {
@@ -8,7 +7,7 @@ class Modelo extends CI_Model {
     var $marca_id;
     var $creado;
     var $modificado;
-    static $tabla = 'marcas';
+    static $tabla = 'modelos';
 
     function __construct() {
         parent::__construct();
@@ -53,21 +52,38 @@ class Modelo extends CI_Model {
     function set_modificado($modificado) {
         $this->modificado = $modificado;
     }
-
+    
+    function query_without_condition(){
+        $select = "modelos.id, modelos.nombre, modelos.marca_id, marcas.nombre AS marca ";
+        $this->db->select($select);
+        $this->db->from(self::$tabla);
+        $this->db->join('marcas', 'marcas.id =  modelos.marca_id');
+    }
+    
+    function get_modelos(){
+        $this->query_without_condition();
+        return $this->db->get()->result();
+    }
+    
+    function get_modelo_x_id($id){
+        $this->query_without_condition();
+        $this->db->where('modelos.id', $id);
+       return $this->db->get()->row();
+    }
+    
     function insert() {
-        
+        $this->db->set($this);
+        $this->db->insert(self::$tabla);
     }
 
     function update() {
-        
+        $this->db->set($this);
+        $this->db->where('id', $this->id);
+        $this->db->update(self::$tabla);
     }
 
     function delete() {
-        
-    }
-
-    function get_object() {
-        return $this;
+        $this->db->delete(self::$tabla, array('id' => $this->id));
     }
 
 }

@@ -44,20 +44,27 @@ class Marca extends CI_Model {
         $this->modificado = $modificado;
     }
 
+    function get_marcas() {
+        return $this->db->get(self::$tabla)->result();
+    }
+
+    function get_marca_x_id($id) {
+        return $this->db->get_where(self::$tabla, array('id'=>$id))->row();
+    }
+
     function insert() {
-        
+        $this->db->set($this);
+        $this->db->insert(self::$tabla);
     }
 
     function update() {
-        
+        $this->db->set($this);
+        $this->db->where('id', $this->id);
+        $this->db->update(self::$tabla);
     }
 
     function delete() {
-        
-    }
-
-    function get_object() {
-        return $this;
+        $this->db->delete(self::$tabla, array('id' => $this->id));
     }
 
 }
