@@ -21,7 +21,7 @@
                     <h3 class="box-title">Marca</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" method="post" action="<?php echo base_url('index.php/modelo_controller/request'); ?>">
+                <form role="form" method="post" action="<?php echo base_url('index.php/modelo_controller/request/'.$modelo->id); ?>">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
