@@ -1,40 +1,55 @@
 <?php
 
 class Modelo_Controller extends CI_Controller {
-    
+
     static $view_folder = "modelo";
-}
-   
+
     function __construct() {
         parent::__construct();
+        $this->load->model('Modelo');
     }
-    
-    function index(){
-        $this->load->model('Modelos');
-        $r = $this->modelos->listar();
-         echo "<pre>";
-        print_r($r->result_array());
-       
-    }
- function listar(){
-        $data['modelos'] = $this->modelo->get_modelos();
-        $this->load->view(self::$view_folder.'/listar', $data);
-    }
-    
-    function crear(){
-        $this->modelo->set_nombre('Verde Olivo');
-        $this->modelo->insert();
-    }
-    
-    function modificar($id){
-        $this->modelo->set_id($id);
-        $this->modelo->set_nombre('Amarillo Pollito');
-        $this->modelo->update();
-        
-    }
-    
-    function eliminar($id){
-         $this->modelo->set_id($id);
-         $this->modelo->delete();
+
+    function index() {
          $this->listar();
-    } 
+    }
+
+    function listar() {
+        $data['modelos'] = $this->Modelo->get_modelos();
+        $data['titulo'] = "Gestionar modelos";
+        $this->load->view(self::$view_folder . '/listar', $data);
+    }
+    
+     function request($id = null){
+        $this->Modelo->set_nombre($this->input->post('nombre'));
+        $this->Modelo->set_marca_id($this->input->post('marca'));
+        if ($id == null){
+            $this->Modelo->insert(); 
+        } else {
+           $this->Modelo->set_id($id);
+           $this->Modelo->update();
+        }
+        redirect(base_url("index.php/modelo_controller/listar"));
+    }
+
+    function crear() {
+       $data['marcas'] = $this->get_marcas();
+       $this->load->view(self::$view_folder.'/crear', $data);
+    }
+
+    function modificar($id) {
+        $data['modelo']=$this->Modelo->get_modelo_x_id($id);
+        $this->load->view(self::$view_folder.'/modificar', $data);
+    }
+
+    function eliminar($id) {
+        $this->Modelo->set_id($id);
+        $this->Modelo->delete();
+        $this->listar();
+    }
+    
+    function get_marcas(){
+        $this->load->model('Marca');
+        return $this->Marca->get_marcas();
+    }
+
+}
