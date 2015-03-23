@@ -37,7 +37,7 @@
                                 <tr>
                                     <td><?php echo htmlentities($color->nombre); ?></td>
                                     <td>
-                                        <a href="<?php echo base_url('index.php/color_controller/editar/' . $color->id); ?>">Editar</a> |
+                                        <a href="<?php echo base_url('index.php/color_controller/modificar/' . $color->id); ?>">Editar</a> |
                                         <a href="<?php echo base_url('index.php/color_controller/eliminar/' . $color->id); ?>">Eliminar</a>
                                     </td>
                                 </tr>
