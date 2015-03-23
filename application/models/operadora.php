@@ -43,28 +43,30 @@ class Operadora extends CI_Model {
     function set_modificado($modificado) {
         $this->modificado = $modificado;
     }
-    
-    function listar(){
-        $sql = "SELECT * FROM ".self::$tabla; // Lenguaje SQL
+
+    function get_operadoras() {
+        $sql = "SELECT * FROM " . self::$tabla; // Lenguaje SQL
         $result = $this->db->query($sql);
-        return $result;
-        
+        return $result->result();
+    }
+
+    function get_operadora_x_id($id) {
+         return $this->db->get_where(self::$tabla, array('id'=>$id))->row();
     }
 
     function insert() {
-        
+        $this->db->set($this);
+        $this->db->insert(self::$tabla);
     }
 
     function update() {
-        
+        $this->db->set($this);
+        $this->db->where('id', $this->id);
+        $this->db->update(self::$tabla);
     }
 
     function delete() {
-        
-    }
-    
-    function get_object() {
-        return $this;
+        $this->db->delete(self::$tabla, array('id' => $this->id));
     }
 
 }
