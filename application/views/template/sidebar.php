@@ -32,6 +32,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="active"><a href="<?php echo base_url('index.php/color_controller/') ?>"><i class="fa fa-circle-o"></i> Mantenimiento de Colores</a></li>
+                    <li class="active"><a href="<?php echo base_url('index.php/marca_controller/') ?>"><i class="fa fa-circle-o"></i> Mantenimiento de Marcas</a></li>
+                    <li class="active"><a href="<?php echo base_url('index.php/modelo_controller/') ?>"><i class="fa fa-circle-o"></i> Mantenimiento de Modelos</a></li>
                     <!--<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>-->
                 </ul>
             </li>
