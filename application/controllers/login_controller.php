@@ -42,6 +42,7 @@ class Login_Controller extends CI_Controller{
     }
     
     function validar_usuario(){
+        
         return ;
     }
 }
