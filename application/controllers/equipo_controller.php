@@ -50,7 +50,6 @@ class Equipo_Controller extends CI_Controller {
         $data['modelos'] = $this->Modelo->get_modelo_x_marca_id($data['modelo']->marca_id);
         $data['operadoras'] = $this->Operadora->get_operadoras();
         $data['colores'] = $this->Color->get_colores();
-        $data['colores'] = $this->Color->get_colores();
         $data['estados'] = array('N' => 'Nuevo', 'U' => 'Usado');
         
         
