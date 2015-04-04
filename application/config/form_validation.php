@@ -1,6 +1,7 @@
 <?php
 
 $config = array(
+    'valid_usuario' =>
     array(
         'field' => 'nombre',
         'label' => 'Nombre',
