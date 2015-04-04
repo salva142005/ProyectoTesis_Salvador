@@ -15,6 +15,9 @@
                 <input type="email" name="email" class="form-control" placeholder="Correo"/>
             </div>
             <div class="form-group ">
+                <input type="email" name="confirm-email" class="form-control" placeholder="Confirmar Correo"/>
+            </div>
+            <div class="form-group ">
                 <input type="text" name="telefono" class="form-control" placeholder="Teléfono"/>
             </div>
             <div class="form-group ">
