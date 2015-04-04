@@ -71,6 +71,10 @@ class Modelo extends CI_Model {
        return $this->db->get()->row();
     }
     
+    function get_modelo_x_marca_id($marca_id){
+       return $this->db->get_where(self::$tabla, array('marca_id'=>$marca_id))->result();  
+    }
+    
     function insert() {
         $this->db->set($this);
         $this->db->insert(self::$tabla);

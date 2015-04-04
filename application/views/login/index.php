@@ -5,13 +5,13 @@
     </div><!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Registrese para iniciar sesión</p>
-        <form action="#" method="post">
+        <form action="<?php echo base_url('index.php/login_controller/validar_usuario'); ?>" method="post">
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Email"/>
+                <input type="text" name="email" class="form-control" placeholder="Email"/>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Clave"/>
+                <input type="password" name="clave" class="form-control" placeholder="Clave"/>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">

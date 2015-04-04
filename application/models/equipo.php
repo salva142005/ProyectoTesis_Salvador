@@ -11,6 +11,7 @@ class Equipo extends CI_Model {
     var $color_id;
     var $precio;
     var $estado;
+    var $imagen;
     var $creado;
     var $modificado;
     static $tabla = 'equipos';
@@ -49,6 +50,9 @@ class Equipo extends CI_Model {
 
     function get_estado() {
         return $this->estado;
+    }
+    function get_imagen() {
+        return $this->imagen;
     }
 
     function get_creado() {
@@ -90,6 +94,9 @@ class Equipo extends CI_Model {
     function set_estado($estado) {
         $this->estado = $estado;
     }
+    function set_imagen($imagen) {
+        $this->imagen = $imagen;
+    }
 
     function set_creado($creado) {
         $this->creado = $creado;
@@ -98,21 +105,25 @@ class Equipo extends CI_Model {
     function set_modificado($modificado) {
         $this->modificado = $modificado;
     }
+    
+    function get_equipo_x_id($id){
+       return $this->db->get_where(self::$tabla, array('id'=>$id))->row();  
+    }
 
     function insert() {
-        
+        $this->db->set($this);
+        $this->db->insert(self::$tabla);
+        return $this->db->insert_id();
     }
 
     function update() {
-        
+        $this->db->set($this);
+        $this->db->where('id', $this->id);
+        $this->db->update(self::$tabla);
     }
 
     function delete() {
         
-    }
-
-    function get_object() {
-        return $this;
     }
 
 }

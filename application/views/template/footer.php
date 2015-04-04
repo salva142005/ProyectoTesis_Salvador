@@ -41,5 +41,6 @@
 
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo base_url('assets');?>/js/demo.js" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets');?>/js/functions.js" type="text/javascript"></script>
   </body>
 </html>
