@@ -72,7 +72,8 @@ class Usuario extends CI_Model {
     }
 
     function insert() {
-        
+        $this->db->set($this);
+        $this->db->insert(self::$tabla);
     }
 
     function update() {
@@ -81,10 +82,6 @@ class Usuario extends CI_Model {
 
     function delete() {
         
-    }
-
-    function get_object() {
-        return $this;
     }
 
 }
