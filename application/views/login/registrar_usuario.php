@@ -12,16 +12,16 @@
                 <input type="text" name="nombre" class="form-control" maxlength="150" placeholder="Nombre y Apellido"/>
             </div>
             <div class="form-group ">
-                <input type="email" name="email" class="form-control" placeholder="Correo"/>
+                <input type="email" name="email" class="form-control" maxlength="100" placeholder="Correo"/>
             </div>
             <div class="form-group ">
-                <input type="email" name="confirm-email" class="form-control" placeholder="Confirmar Correo"/>
+                <input type="email" name="confirm-email" class="form-control" maxlength="100" placeholder="Confirmar Correo"/>
             </div>
             <div class="form-group ">
-                <input type="text" name="telefono" class="form-control" placeholder="Teléfono"/>
+                <input type="text" name="telefono" class="form-control" maxlength="20" placeholder="Teléfono"/>
             </div>
             <div class="form-group ">
-                <input type="password" name="clave" class="form-control" placeholder="Clave"/>
+                <input type="password" name="clave" class="form-control" maxlength="100" placeholder="Clave"/>
             </div>
             <div class="row">
                 <div class="col-xs-8">    
