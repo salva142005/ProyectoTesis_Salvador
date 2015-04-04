@@ -17,15 +17,9 @@ $config = array(
         'rules' => 'required|matches[email]'
     ),
     array(
-        'field' => 'password',
-        'label' => 'Password',
+        'field' => 'clave',
+        'label' => 'password',
         'rules' => 'required'
     ),
-    array(
-        'field' => 'passconf',
-        'label' => 'Password Confirmation',
-        'rules' => 'required'
-    )
-    
 );
 
