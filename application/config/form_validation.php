@@ -7,6 +7,16 @@ $config = array(
         'rules' => 'required|max_length[150]'
     ),
     array(
+        'field' => 'email',
+        'label' => 'Email',
+        'rules' => 'required|valid_email'
+    ),
+    array(
+        'field' => 'confirm-email',
+        'label' => 'Confirmar Email',
+        'rules' => 'required|matches[email]'
+    ),
+    array(
         'field' => 'password',
         'label' => 'Password',
         'rules' => 'required'
@@ -15,11 +25,7 @@ $config = array(
         'field' => 'passconf',
         'label' => 'Password Confirmation',
         'rules' => 'required'
-    ),
-    array(
-        'field' => 'email',
-        'label' => 'Email',
-        'rules' => 'required'
     )
+    
 );
 
