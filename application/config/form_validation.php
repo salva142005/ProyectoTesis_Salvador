@@ -1,6 +1,7 @@
 <?php
 
 $config = array(
+    'valid_usuario' =>
     array(
         'field' => 'nombre',
         'label' => 'Nombre',
@@ -19,11 +20,6 @@ $config = array(
     array(
         'field' => 'password',
         'label' => 'Password',
-        'rules' => 'required'
-    ),
-    array(
-        'field' => 'passconf',
-        'label' => 'Password Confirmation',
         'rules' => 'required'
     )
     
