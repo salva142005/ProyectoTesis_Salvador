@@ -27,5 +27,11 @@ $config = array(
         'label' => 'telefono',
         'rules' => 'required|max_length[20]'
     ),
+    
+    'validacio_equipo' =>
+    array(),
+    array(),
+    array(),
+    array(),
 );
 
