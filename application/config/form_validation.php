@@ -28,7 +28,7 @@ $config = array(
         'rules' => 'required|max_length[20]'
     ),
     
-    'validacio_equipo' =>
+    'validacion_equipo' =>
     array(),
     array(),
     array(),
