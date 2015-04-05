@@ -25,8 +25,8 @@
                     <input type="hidden" name="usuario_id" value="<?php echo $this->session->userdata('id'); ?>" />
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca el nombre del color">
+                            <label for="nombre">Descripcion del equipo</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca una descripcion del equipo">
                         </div>
                         <div class="form-group">
                             <label for="precio">Precio $$</label>
