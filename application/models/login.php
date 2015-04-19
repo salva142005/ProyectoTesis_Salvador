@@ -36,7 +36,7 @@ class Login extends CI_Model {
     }
 
     function existe_usuario(){
-        $condicion = array('email'=>$this->email, 'clave'=>$this->clave);
+        $condicion = array('email'=>$this->email, 'clave'=>md5($this->clave));
         $usuario = $this->db->get_where(TABLA_USUARIO, $condicion);
         if ($usuario->num_rows()>0){
             $u = $usuario->row();
@@ -45,7 +45,7 @@ class Login extends CI_Model {
                 'nombre' => $u->nombre,
                 'email' => $u->email,
                 'telefono' => $u->telefono,
-            );  
+            ); 
             $this->session->set_userdata($usuario_session);
             return TRUE;
         }

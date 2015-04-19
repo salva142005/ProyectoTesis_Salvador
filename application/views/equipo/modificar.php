@@ -25,12 +25,12 @@
                     <input type="hidden" name="usuario_id" value="<?php echo $equipo->usuario_id; ?>" />
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo htmlentities($equipo->nombre); ?>" placeholder="Introduzca el nombre del color">
+                            <label for="nombre">Descripcion del equipo</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo htmlentities($equipo->descripcion_equipo); ?>" placeholder="Introduzca el nombre del color">
                         </div>
                         <div class="form-group">
                             <label for="precio">Precio $$</label>
-                            <input type="text" class="form-control" name="precio" id="precio" value="<?php echo $equipo->precio; ?>" placeholder="Introduzca el precio del equipo">
+                            <input type="text" class="form-control" name="precio" id="precio" value="<?php echo $equipo->precio_equipo; ?>" placeholder="Introduzca el precio del equipo">
                         </div>
 
 
@@ -75,10 +75,14 @@
                             <select class="form-control" name="estado" id="estado">
                                 <option value="">-Seleccione el estado-</option>
                                 <?php foreach ($estados as $key => $item): ?>
-                                <?php $select = ($equipo->estado == $key)? 'selected="selected"' : '';?>
+                                <?php $select = ($equipo->estado_equipo == $key)? 'selected="selected"' : '';?>
                                     <option <?php echo $select; ?> value="<?php echo $key; ?>"><?php echo htmlentities($item); ?></option>
                                 <?php endforeach; ?>
                             </select>
+                        </div>
+                         <div class="form-group">
+                            <label for="cantidad">Cantidad en existencia</label>
+                            <input type="text" class="form-control" name="cantidad" id="cantidad"  value="<?php echo $equipo->cantidad; ?>" placeholder="Introduzca la cantidad en existencia del producto">
                         </div>
                         <div class="form-group">
                             <label for="estado">Imagen del equipo</label>

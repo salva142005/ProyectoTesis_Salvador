@@ -51,7 +51,7 @@ class Login_Controller extends CI_Controller{
         if ($this->Login->existe_usuario()){
             redirect(base_url('index.php/home_controller/'));
         }else {
-             redirect(base_url('index.php/login_controller/usuario_no_existe'));
+            redirect(base_url('index.php/login_controller/usuario_no_existe'));  
         }
        
     }

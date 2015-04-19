@@ -11,36 +11,40 @@
  *
  * @author Raúl
  */
-class Home_Controller extends CI_Controller{
-    static $view_folder='home';
-            function __construct() {
+class Home_Controller extends CI_Controller {
+
+    static $view_folder = 'home';
+
+    function __construct() {
         parent::__construct();
+        $this->load->model('Equipo');
     }
-    
-    function index(){
-       $this->load->view(self::$view_folder.'/index');
-        
+
+    function index() {
+        $data['equipos']=$this->Equipo->get_equipos();
+        $this->load->view(self::$view_folder . '/index', $data);
     }
-   function listar(){
+
+    function listar() {
         $data['colores'] = $this->Color->get_colores();
-        $this->load->view(self::$view_folder.'/listar', $data);
+        $this->load->view(self::$view_folder . '/listar', $data);
     }
-    
-    function crear(){
+
+    function crear() {
         $this->Color->set_nombre('Verde Olivo');
         $this->Color->insert();
     }
-    
-    function modificar($id){
+
+    function modificar($id) {
         $this->Color->set_id($id);
         $this->Color->set_nombre('Amarillo Pollito');
         $this->Color->update();
-        
     }
-    
-    function eliminar($id){
-         $this->Color->set_id($id);
-         $this->Color->delete();
-         $this->listar();
-    } 
+
+    function eliminar($id) {
+        $this->Color->set_id($id);
+        $this->Color->delete();
+        $this->listar();
+    }
+
 }

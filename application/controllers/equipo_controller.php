@@ -10,10 +10,7 @@ class Equipo_Controller extends CI_Controller {
     }
 
     function index() {
-        $this->load->model('Equipos');
-        $r = $this->equipos->listar();
-        echo "<pre>";
-        print_r($r->result_array());
+      $this->listar();
     }
 
     function listar() {
@@ -70,6 +67,7 @@ class Equipo_Controller extends CI_Controller {
         $this->Equipo->set_usuario_id($this->input->post('usuario_id'));
         $this->Equipo->set_color_id($this->input->post('color'));
         $this->Equipo->set_precio($this->input->post('precio'));
+        $this->Equipo->set_cantidad($this->input->post('cantidad'));
         $this->Equipo->set_estado($this->input->post('estado'));
 
         $upload_data = $this->subir_foto();
@@ -105,7 +103,8 @@ class Equipo_Controller extends CI_Controller {
             return $data;
         }
     }
-
+    
+    
     function eliminar($id) {
         $this->Equipo->set_id($id);
         $this->Equipo->delete();

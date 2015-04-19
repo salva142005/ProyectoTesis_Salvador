@@ -3,7 +3,7 @@
 class Usuario_Controller extends CI_Controller {
     
     static $view_folder = "usuario";
-}
+
    
     function __construct() {
         parent::__construct();
@@ -38,3 +38,4 @@ class Usuario_Controller extends CI_Controller {
          $this->Usuario->delete();
          $this->listar();
     }  
+}

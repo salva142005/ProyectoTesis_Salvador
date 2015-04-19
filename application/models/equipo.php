@@ -11,6 +11,7 @@ class Equipo extends CI_Model {
     var $color_id;
     var $precio;
     var $estado;
+    var $cantidad;
     var $imagen;
     var $creado;
     var $modificado;
@@ -51,6 +52,11 @@ class Equipo extends CI_Model {
     function get_estado() {
         return $this->estado;
     }
+    
+    function get_cantidad() {
+        return $this->cantidad;
+    }
+
     function get_imagen() {
         return $this->imagen;
     }
@@ -94,6 +100,11 @@ class Equipo extends CI_Model {
     function set_estado($estado) {
         $this->estado = $estado;
     }
+    
+    function set_cantidad($cantidad) {
+        $this->cantidad = $cantidad;
+    }
+
     function set_imagen($imagen) {
         $this->imagen = $imagen;
     }
@@ -105,9 +116,30 @@ class Equipo extends CI_Model {
     function set_modificado($modificado) {
         $this->modificado = $modificado;
     }
-    
-    function get_equipo_x_id($id){
-       return $this->db->get_where(self::$tabla, array('id'=>$id))->row();  
+
+    function get_equipo_x_id($id) {
+        return $this->get_equipos($id);
+    }
+
+    function get_equipos($id = null) {
+        $select = "u.id usuario_id, u.nombre nombre_usuario, u.email usuario_email, u.telefono usuario_telefono,
+                c.nombre color_equipo, mar.nombre marca, model.nombre modelo, e.nombre descripcion_equipo, 
+                e.operadora_id, e.color_id, e.operadora_id,e.precio precio_equipo, e.estado estado_equipo,
+                o.nombre operadora, e.imagen, e.modelo_id, e.id, e.cantidad";
+        
+        $this->db->select($select);
+        $this->db->from(' equipos e ');
+        $this->db->join('usuarios u', 'u.id = e.usuario_id', 'left');
+        $this->db->join('operadoras o', 'o.id = e.operadora_id', 'left');
+        $this->db->join('modelos model', 'model.id = e.modelo_id', 'left');
+        $this->db->join('marcas mar', 'mar.id = model.marca_id', 'left');
+        $this->db->join('colores c', 'c.id = e.color_id', 'left');
+        
+        if ($id != null) {
+            $this->db->where("e.id", $id);
+            return $this->db->get()->row();
+        }
+        return $this->db->get()->result();
     }
 
     function insert() {

@@ -75,6 +75,12 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="cantidad">Cantidad en existencia</label>
+                            <input type="text" class="form-control" name="cantidad" id="cantidad" placeholder="Introduzca la cantidad en existencia del producto">
+                        </div>
+                        
                         <div class="form-group">
                             <label for="update">Foto para el equipo</label>
                             <input type="file" id="userfile" name="userfile">
