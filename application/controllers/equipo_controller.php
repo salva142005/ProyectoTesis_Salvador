@@ -63,7 +63,7 @@ class Equipo_Controller extends CI_Controller {
     }
 
     function request($id = null) {
-
+        
         $this->Equipo->set_nombre($this->input->post('nombre'));
         $this->Equipo->set_modelo_id($this->input->post('modelo'));
         $this->Equipo->set_operadora_id($this->input->post('operadora'));
