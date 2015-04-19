@@ -19,7 +19,8 @@ class Equipo_Controller extends CI_Controller {
     }
 
     function crear() {
-        if (empty($this->session->userdata('id'))){
+        $id = $this->session->userdata('id');
+        if (empty($id)){
             redirect(base_url());
         }
         /* Inicializacion de modelos necesarios */

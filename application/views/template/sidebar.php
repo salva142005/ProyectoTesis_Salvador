@@ -4,12 +4,14 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                 <?php if (!empty($this->session->userdata('id'))):?>
+                 <?php $id = $this->session->userdata('id');?>
+                <?php if (!empty($this->session->userdata($id))):?>
                 <img src="<?php echo base_url('assets'); ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                  <?php endif;?>
             </div>
             <div class="pull-left info">
-                <?php if (!empty($this->session->userdata('id'))):?>
+                <?php $id = $this->session->userdata('id');?>
+              <?php if (!empty($this->session->userdata($id))):?>
                 <p><?php echo $this->session->userdata('nombre');?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -32,7 +34,8 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MENÚ</li>
-            <?php if (!empty($this->session->userdata('id'))):?>
+            <?php $id = $this->session->userdata('id');?>
+              <?php if (!empty($this->session->userdata($id))):?>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-th"></i> <span>Gestionar equipos</span>  <i class="fa fa-angle-left pull-right"></i>
@@ -44,7 +47,9 @@
                 </ul>
             </li>
             <?php endif;?>
-            <?php if (!empty($this->session->userdata('admin'))):?>
+            <?php $admin = $this->session->userdata('admin');?>
+              <?php if (!empty($this->session->userdata($admin))):?>
+            
             <li class="treeview">
                 <a href="#">
 <!--                    <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>-->

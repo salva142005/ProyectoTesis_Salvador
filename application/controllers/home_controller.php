@@ -39,7 +39,8 @@ class Home_Controller extends CI_Controller {
     }
     
     function search(){
-        if(empty($this->input->get("q"))){
+        $q = $this->input->get("q");
+        if(empty($q)){
             $this->index();
             return;
         }
