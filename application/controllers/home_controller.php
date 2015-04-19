@@ -28,7 +28,8 @@ class Home_Controller extends CI_Controller {
     }
     
     function listar_equipos_del_usuario(){
-        if (!empty($this->session->userdata('id'))){
+        $id=$this->session->userdata('id');
+        if (!empty($id)){
             $data['titulo_principal']="Mis equipos";
             $data['titulo_secundario']="Listado de mis equipos";
             $data['equipos']=$this->Equipo->get_equipos(null, true);

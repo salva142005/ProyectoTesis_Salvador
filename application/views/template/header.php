@@ -240,7 +240,7 @@
               </li>
               <!-- User Account: style can be found in dropdown.less -->
               <?php $id = $this->session->userdata('id');?>
-              <?php if (!empty($this->session->userdata($id))):?>
+              <?php if (!empty($id)):?>
               <li class="dropdown user user-menu">
                
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

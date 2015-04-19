@@ -11,7 +11,7 @@
             </div>
             <div class="pull-left info">
                 <?php $id = $this->session->userdata('id');?>
-              <?php if (!empty($this->session->userdata($id))):?>
+              <?php if (!empty($id)):?>
                 <p><?php echo $this->session->userdata('nombre');?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -35,7 +35,7 @@
         <ul class="sidebar-menu">
             <li class="header">MENÚ</li>
             <?php $id = $this->session->userdata('id');?>
-              <?php if (!empty($this->session->userdata($id))):?>
+              <?php if (!empty($id)):?>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-th"></i> <span>Gestionar equipos</span>  <i class="fa fa-angle-left pull-right"></i>
@@ -48,7 +48,7 @@
             </li>
             <?php endif;?>
             <?php $admin = $this->session->userdata('admin');?>
-              <?php if (!empty($this->session->userdata($admin))):?>
+              <?php if (!empty($admin)):?>
             
             <li class="treeview">
                 <a href="#">
