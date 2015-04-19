@@ -46,11 +46,15 @@ class Login extends CI_Model {
                 'email' => $u->email,
                 'telefono' => $u->telefono,
             ); 
+            if ($u->admin == 1){
+                $usuario_session['admin'] = TRUE;
+            }
             $this->session->set_userdata($usuario_session);
             return TRUE;
         }
         return FALSE;
     }
+   
     
    
     

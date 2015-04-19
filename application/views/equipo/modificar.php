@@ -87,7 +87,7 @@
                         <div class="form-group">
                             <label for="estado">Imagen del equipo</label>
                             <span style=" text-align: center;background-color: #e7e7e7; padding: 10px; border: 3px solid #ccc; display: block">
-                                <img src="<?php echo $equipo->imagen; ?>">
+                                <img class="img-responsive" src="<?php echo $equipo->imagen; ?>">
                                 <input type="hidden" name="imagen_url" value="<?php echo $equipo->imagen; ?>"/>
                             </span>
                         </div>

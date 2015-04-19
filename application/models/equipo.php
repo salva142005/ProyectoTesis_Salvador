@@ -121,7 +121,7 @@ class Equipo extends CI_Model {
         return $this->get_equipos($id);
     }
 
-    function get_equipos($id = null) {
+    function get_equipos($id = null, $usuario = false, $busqueda=false) {
         $select = "u.id usuario_id, u.nombre nombre_usuario, u.email usuario_email, u.telefono usuario_telefono,
                 c.nombre color_equipo, mar.nombre marca, model.nombre modelo, e.nombre descripcion_equipo, 
                 e.operadora_id, e.color_id, e.operadora_id,e.precio precio_equipo, e.estado estado_equipo,
@@ -138,8 +138,17 @@ class Equipo extends CI_Model {
         if ($id != null) {
             $this->db->where("e.id", $id);
             return $this->db->get()->row();
+        } else if($usuario){
+            $this->db->where("e.usuario_id", $this->session->userdata("id"));
+        } else if($busqueda){
+            $this->db->like("e.nombre", $busqueda);
+            return $this->db->get();
         }
         return $this->db->get()->result();
+    }
+    
+    function numero_registros(){
+        return $this->db->count_all_results();
     }
 
     function insert() {

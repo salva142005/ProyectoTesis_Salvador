@@ -19,6 +19,9 @@ class Equipo_Controller extends CI_Controller {
     }
 
     function crear() {
+        if (empty($this->session->userdata('id'))){
+            redirect(base_url());
+        }
         /* Inicializacion de modelos necesarios */
         $this->load->model('Marca');
         $this->load->model('Operadora');
@@ -90,9 +93,9 @@ class Equipo_Controller extends CI_Controller {
     function subir_foto() {
         $config['upload_path'] = './upload/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '100';
-        $config['max_width'] = '1024';
-        $config['max_height'] = '768';
+        $config['max_size'] = '1000';
+        $config['max_width'] = '2000';
+        $config['max_height'] = '2000';
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());

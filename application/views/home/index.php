@@ -4,8 +4,8 @@
 <!-- Seccion dinamica -->
 <section class="content-header">
     <h1>
-        Equipos
-        <small>Inicio</small>
+        <?php if(isset($titulo_principal))echo $titulo_principal; else echo "Equipos"; ?>
+        <small><?php if(isset($titulo_secundario))echo $titulo_secundario; else echo ""; ?></small>
     </h1>
 
 
@@ -14,7 +14,7 @@
 <section class="content">
     <?php 
     $new_row = TRUE;
-    $column = 0;
+    $column = 1;
     $max_columns = 3; 
     ?>
 <?php foreach ($equipos as $e): ?>
@@ -45,14 +45,14 @@
                    <div class="box-tools" >
                         <a href="#" class="btn btn-warning">Ver detalles</a>
                         <?php if ($e->usuario_id == $this->session->userdata('id')) :?>
-                        <a href="#" class="btn btn-success">Editar producto</a>
+                        <a href="<?php echo base_url("index.php/equipo_controller/modificar/".$e->id) ?>" class="btn btn-success">Editar producto</a>
                         <?php endif;?>
                     </div>
                 </div><!-- /.box-body -->
             </div>
         </div>
        <?php if ($column > $max_columns) $new_row = true; ?>
-       <?php if ($new_row) echo "</div>"; $column++; ?>
+       <?php $column++; if ($new_row) {echo "</div>";$column =1;}  ?>
         
     
   

@@ -59,4 +59,9 @@ class Login_Controller extends CI_Controller{
     function usuario_no_existe(){
         $this->load->view(self::$folder_view.'/usuario_no_existe');
     }
+    
+    function out(){
+        $this->session->sess_destroy();
+        redirect(base_url());
+    }
 }

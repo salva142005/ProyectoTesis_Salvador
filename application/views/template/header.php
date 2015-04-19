@@ -41,7 +41,7 @@
     <div class="wrapper">
         <header class="main-header">
         <!-- Logo -->
-        <a href="#" class="logo"><b>Tu Celular</b></a>
+        <a href="<?php echo base_url("index.php/home_controller")?>" class="logo"><b>Tu Celular</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -239,43 +239,40 @@
                 </ul>
               </li>
               <!-- User Account: style can be found in dropdown.less -->
+              <?php if (!empty($this->session->userdata('id'))):?>
               <li class="dropdown user user-menu">
+               
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?php echo base_url('assets');?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <span class="hidden-xs"><?php echo htmlentities($this->session->userdata('nombre')); ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="<?php echo base_url('assets');?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
+                      <?php echo htmlentities($this->session->userdata('nombre')); ?> - <?php echo htmlentities($this->session->userdata('email')); ?>
+                      
                     </p>
                   </li>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
+                  
+                 
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                      <a href="#" class="btn btn-default btn-flat">Perfil</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                        <a href="<?php echo base_url("index.php/login_controller/out"); ?>" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>
               </li>
+              <?php else:?>
+              <li>
+              <a class="btn btn-info" href="<?php echo base_url("index.php/login_controller"); ?>">Ingresar</a>
+              </li>
+              <?php endif;?>
             </ul>
           </div>
         </nav>

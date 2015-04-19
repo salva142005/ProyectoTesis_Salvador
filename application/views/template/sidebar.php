@@ -4,18 +4,25 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
+                 <?php if (!empty($this->session->userdata('id'))):?>
                 <img src="<?php echo base_url('assets'); ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                 <?php endif;?>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <?php if (!empty($this->session->userdata('id'))):?>
+                <p><?php echo $this->session->userdata('nombre');?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <?php else:?>
+                <p>Sin conexión</p>
+                <a href="#"><i class="fa fa-circle text-danger"></i> Offline</a>
+                <?php endif;?>
             </div>
         </div>
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+        <form action="<?php echo base_url("index.php/home_controller/search");?>" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                <input type="text" name="q" <?php if(isset($busqueda_string))echo "value='$busqueda_string'";?> class="form-control" placeholder="Buscar..."/>
                 <span class="input-group-btn">
                     <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                 </span>
@@ -24,8 +31,21 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="header">MENÚ</li>
+            <?php if (!empty($this->session->userdata('id'))):?>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-th"></i> <span>Gestionar equipos</span>  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                 <ul class="treeview-menu">
+                    <li class=""><a href="<?php echo base_url('index.php/equipo_controller/crear') ?>"><i class="fa fa-circle-o"></i> Nuevo equipo</a></li>
+                    <li class=""><a href="<?php echo base_url('index.php/home_controller/listar_equipos_del_usuario') ?>"><i class="fa fa-circle-o"></i> Mis equipos</a></li>
+                    
+                </ul>
+            </li>
+            <?php endif;?>
+            <?php if (!empty($this->session->userdata('admin'))):?>
+            <li class="treeview">
                 <a href="#">
 <!--                    <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>-->
                         <i class="fa fa-cog"></i> <span>Mantenimiento</span> <i class="fa fa-angle-left pull-right"></i>
@@ -38,6 +58,7 @@
                     <!--<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>-->
                 </ul>
             </li>
+            <?php endif;?>
 <!--            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-files-o"></i>

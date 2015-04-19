@@ -7,7 +7,7 @@
     <div class="login-box-body">
         <div class = "callout callout-info">
             <h4>Su usuario ha sido creado con éxito</h4>
-            <p><a href="#">Haga click aqui para ingresar al sistema</a></p>
+            <p><a href="<?php echo base_url("index.php/login_controller"); ?>">Haga click aqui para ingresar</a></p>
         </div>
     </div>
 </div>
