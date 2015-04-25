@@ -36,7 +36,6 @@ $config = array(
             'label' => 'Descripción del equipo',
             'rules' => 'required|max_length[225]'
         ),
-        
     ),
 );
 
