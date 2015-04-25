@@ -45,7 +45,7 @@ $config = array(
             'field' => 'Cantidad',
             'label' => 'Cantidad De Equipos Disponible',
             'rules' => 'required|numeric|max_length[13]'
-        )
+        ),
     ),
     'validacion_marca' =>
     array(
@@ -53,7 +53,28 @@ $config = array(
             'field' => 'nombre',
             'label' => 'Nombre De La Marca',
             'rules' => 'required|max_length[60]'
-        )
-    )
+        ),
+    ),
+    'validacion_modelo' =>
+    array(
+        array(
+            'field' => 'nombre',
+            'label' => 'Nombre Del Modelo',
+            'rules' => 'required|max_length[45]'
+        ),
+        array(
+            'field' => 'marca',
+            'label' => 'Marca Del Modelo',
+            'rules' => 'required|max_length[60]'
+        ),
+    ),
+    'validacion_operadora' =>
+    array(
+        array(
+             'field' => 'nombre',
+            'label' => 'Nombre De la Operadora',
+            'rules' => 'required|max_length[60]'
+        ),
+    ),
 );
 
