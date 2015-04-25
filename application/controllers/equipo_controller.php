@@ -64,7 +64,10 @@ class Equipo_Controller extends CI_Controller {
     }
 
     function request($id = null) {
-        
+        if(!$this->form_validation->run('validacion_equipos')){
+            echo 'error de validacion revisar campos';
+            return;
+        }
         $this->Equipo->set_nombre($this->input->post('nombre'));
         $this->Equipo->set_modelo_id($this->input->post('modelo'));
         $this->Equipo->set_operadora_id($this->input->post('operadora'));
@@ -108,6 +111,10 @@ class Equipo_Controller extends CI_Controller {
         }
     }
     
+    function detalle($id){
+        $data['equipo']=$this->Equipo->get_equipos($id);
+        $this->load->view(self::$view_folder.'/detalle', $data);
+    }
     
     function eliminar($id) {
         $this->Equipo->set_id($id);

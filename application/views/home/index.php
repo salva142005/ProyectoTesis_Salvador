@@ -43,7 +43,7 @@
                         <li> <span <?php if ($e->cantidad == 0) echo "style='color:red;'";?>> Cantidad: <?php echo $e->cantidad; ?> </span></li>
                     </ul>
                    <div class="box-tools" >
-                        <a href="#" class="btn btn-warning">Ver detalles</a>
+                       <a href="<?php echo base_url('index.php/equipo_controller/detalle/'.$e->id);?>" class="btn btn-warning">Ver detalles</a>
                         <?php if ($e->usuario_id == $this->session->userdata('id')) :?>
                         <a href="<?php echo base_url("index.php/equipo_controller/modificar/".$e->id) ?>" class="btn btn-success">Editar producto</a>
                         <?php endif;?>
