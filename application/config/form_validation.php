@@ -36,7 +36,24 @@ $config = array(
             'label' => 'Descripción del equipo',
             'rules' => 'required|max_length[225]'
         ),
-        S
+        array(
+            'field' => 'precio',
+            'label' => 'Precio del equipo',
+            'rules' => 'required|numeric|max_length[13]'    
+        ),
+        array(
+            'field' => 'Cantidad',
+            'label' => 'Cantidad De Equipos Disponible',
+            'rules' => 'required|numeric|max_length[13]'
+        )
     ),
+    'validacion_marca' =>
+    array(
+        array(
+            'field' => 'nombre',
+            'label' => 'Nombre De La Marca',
+            'rules' => 'required|max_length[60]'
+        )
+    )
 );
 
