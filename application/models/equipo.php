@@ -147,6 +147,20 @@ class Equipo extends CI_Model {
         return $this->db->get()->result();
     }
     
+    function descontar_cantidad_equipo($id){
+        $this->id = $id;
+        $e = $this->get_equipos($id);
+        $cantidad_descontada = $e->cantidad - 1;
+        $this->db->update(self::$tabla, array('cantidad'=>$cantidad_descontada), array('id'=>$id));
+    }
+    
+    function aumentar_cantidad($id){
+        $this->id = $id;
+        $e = $this->get_equipos($id);
+        $cantidad_aumentada = (int)$e->cantidad + 1;
+        $this->db->update(self::$tabla, array('cantidad'=>$cantidad_aumentada), array('id'=>$id));
+    }
+    
     function numero_registros(){
         return $this->db->count_all_results();
     }

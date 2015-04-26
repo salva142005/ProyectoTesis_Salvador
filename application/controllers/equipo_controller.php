@@ -112,6 +112,7 @@ class Equipo_Controller extends CI_Controller {
     }
     
     function detalle($id){
+        $data['comprador_id'] = $this->session->userdata('id');
         $data['equipo']=$this->Equipo->get_equipos($id);
         $this->load->view(self::$view_folder.'/detalle', $data);
     }

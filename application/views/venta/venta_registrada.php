@@ -13,6 +13,15 @@
 
 <section class="content">
     <div class="row">
+        <div class="col-md-12">
+            <div class="callout callout-success">
+                <h4><i class="fa fa-check"></i> Registro de compra exitosa</h4>
+                <p><?php echo htmlentities($mensaje_venta_registrada); ?></p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <!-- left column -->
         <div class="col-md-9">
             <!-- general form elements -->
@@ -33,10 +42,6 @@
                         <tr>
                             <td class="text-blue">Precio </td><td> <?php echo number_format($equipo->precio_equipo, 2, ',', '.'); ?> </td>
                         </tr>
-
-                        <tr>
-                            <td class="text-blue">Cantidad </td><td> <?php echo $equipo->cantidad; ?> </td>
-                        </tr>
                         <tr>
                             <td class="text-blue">Operadora </td><td> <?php echo htmlentities($equipo->operadora); ?> </td>
                         </tr>
@@ -56,45 +61,9 @@
                     <br/>
                     <br/>
                     <a href="<?php echo base_url(); ?>" class="btn btn-success"> <i class="fa fa-arrow-left"></i>Regresar</a>
-                    <a href="<?php echo base_url("index.php/equipo_controller/modificar/" . $equipo->id) ?>" class="btn btn-info"><i class="fa fa-edit"></i>Editar producto</a>
+
                 </div>
             </div>
-        </div>
-        <div class="col-md-3">
-            <?php if (isset($comprador_id) and ! empty($comprador_id) and ( $comprador_id != $equipo->usuario_id) and ($equipo->cantidad>0)): ?>
-                <form role="form" method="post" action="<?php echo base_url("index.php/venta_controller/registrar_venta") ?>">
-                    <input type="hidden" name="comprador_id" value="<?php echo $comprador_id; ?>">
-                    <input type="hidden" name="vendedor_id" value="<?php echo $equipo->usuario_id; ?>">
-                    <input type="hidden" name="equipo_id" value="<?php echo $equipo->id; ?>">
-
-                    <button type="submit" class="btn btn-warning btn-lg">
-                        <i class="fa fa-shopping-cart"></i> Comprar
-                    </button>
-                </form>
-            <?php elseif ($comprador_id != $equipo->usuario_id): ?>
-                
-                    <button type="submit" class="btn btn-default btn-lg disabled">
-                        <i class="fa fa-shopping-cart"></i>Comprar
-                    </button>
-                    <br>
-                    <br>
-                    <?php if($equipo->cantidad>0): ?>
-                    <div class="callout callout-warning">
-                        <h4><i class="fa fa-warning"></i> Información</h4>
-                        <p>Para comprar debe registrarse</p>
-                        <a href="<?php echo base_url('index.php/login_controller') ?>"> Haga click aquí</a>
-                    </div>
-                    <?php else:?>
-                    <div class="callout callout-danger">
-                        <h4><i class="fa fa-warning"></i> Equipo agotado</h4>
-                        <p>Pongase en contacto con el proveedor</p>
-                    </div>
-                    <?php endif;?>
-                <?php else: ?>
-                    <h2>Este producto es suyo</h2>
-                
-
-            <?php endif; ?>
         </div>
     </div>
 </section>

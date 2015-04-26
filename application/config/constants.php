@@ -36,6 +36,9 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
-
+//Constantes de ventas
+define('VENTA_EN_PROCESO', 2);
+define('VENTA_EXITOSA', 1);
+define('VENTA_CANCELADA', 0);
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

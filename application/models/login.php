@@ -38,6 +38,7 @@ class Login extends CI_Model {
     function existe_usuario(){
         $condicion = array('email'=>$this->email, 'clave'=>md5($this->clave));
         $usuario = $this->db->get_where(TABLA_USUARIO, $condicion);
+        $this->load->model('Venta');
         if ($usuario->num_rows()>0){
             $u = $usuario->row();
             $usuario_session = array(
@@ -45,6 +46,10 @@ class Login extends CI_Model {
                 'nombre' => $u->nombre,
                 'email' => $u->email,
                 'telefono' => $u->telefono,
+                'ventas' => $this->Venta->get_ventas_x_vendedor($u->id),
+                'nro_ventas' => $this->Venta->get_numero_ventas(),
+                'compras' => $this->Venta->get_ventas_por_comprador($u->id),
+                'nro_compras' => $this->Venta->get_numero_compras(),
             ); 
             if ($u->admin == 1){
                 $usuario_session['admin'] = TRUE;
