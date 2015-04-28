@@ -71,7 +71,7 @@ $config = array(
     'validacion_operadora' =>
     array(
         array(
-             'field' => 'nombre',
+            'field' => 'nombre',
             'label' => 'Nombre De la Operadora',
             'rules' => 'required|max_length[60]'
         ),
