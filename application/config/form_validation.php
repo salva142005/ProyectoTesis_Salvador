@@ -29,7 +29,7 @@ $config = array(
             'rules' => 'required|max_length[20]'
         ),
     ),
-    'validacion_equipo' =>
+    'validacion_equipos' =>
     array(
         array(
             'field' => 'nombre',
@@ -39,7 +39,7 @@ $config = array(
         array(
             'field' => 'precio',
             'label' => 'Precio del equipo',
-            'rules' => 'required|numeric|max_length[13]'    
+            'rules' => 'required|max_length[13]'    
         ),
         array(
             'field' => 'Cantidad',
