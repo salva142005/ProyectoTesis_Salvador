@@ -46,8 +46,9 @@ class Usuario_Controller extends CI_Controller {
            $this->Usuario->set_id($id);
            $this->Usuario->update();
            
-           $this->modificar($id);
+           
            $this->session->set_flashdata('mensaje', 'El usuario ha sido editado exitosamente');
+           redirect('index.php/usuario_controller/modificar/'.$id);
         }
     }
     
