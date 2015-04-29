@@ -130,5 +130,13 @@ $config = array(
             'rules' => 'required|max_length[60]|is_unique[operadoras.nombre]'
         ),
     ),
+    'validacion_servicio' =>
+    array(
+        array(
+            'field' => 'descripcion',
+            'label' => 'Descripcion del servicio',
+            'rules' => 'required'
+        ),
+    ),
 );
 

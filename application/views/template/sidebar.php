@@ -34,6 +34,12 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MENÚ</li>
+            <li >
+                <a href="<?php echo base_url('index.php/servicio_controller');?>">
+                    <i class="fa fa-circle-o"></i> <span>Ver Servicios</span> 
+                </a>
+                 
+            </li>
             <?php $id = $this->session->userdata('id');?>
               <?php if (!empty($id)):?>
             <li class="treeview">
@@ -43,6 +49,16 @@
                  <ul class="treeview-menu">
                     <li class=""><a href="<?php echo base_url('index.php/equipo_controller/crear') ?>"><i class="fa fa-circle-o"></i> Nuevo equipo</a></li>
                     <li class=""><a href="<?php echo base_url('index.php/home_controller/listar_equipos_del_usuario') ?>"><i class="fa fa-circle-o"></i> Mis equipos</a></li>
+                    
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-th"></i> <span>Gestionar servicios</span>  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                 <ul class="treeview-menu">
+                    <li class=""><a href="<?php echo base_url('index.php/servicio_controller/crear') ?>"><i class="fa fa-circle-o"></i> Nuevo servicio</a></li>
+                    <li class=""><a href="<?php echo base_url('index.php/servicio_controller/listar_servicios_del_usuario') ?>"><i class="fa fa-circle-o"></i> Mis servicios</a></li>
                     
                 </ul>
             </li>
