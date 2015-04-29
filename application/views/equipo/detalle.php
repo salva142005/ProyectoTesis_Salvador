@@ -56,7 +56,10 @@
                     <br/>
                     <br/>
                     <a href="<?php echo base_url(); ?>" class="btn btn-success"> <i class="fa fa-arrow-left"></i>Regresar</a>
-                    <a href="<?php echo base_url("index.php/equipo_controller/modificar/" . $equipo->id) ?>" class="btn btn-info"><i class="fa fa-edit"></i>Editar producto</a>
+                    <?php $usuario_actual = $this->session->userdata('id'); ?>
+                    <?php if ($equipo->usuario_id==$usuario_actual): ?>
+                        <a href="<?php echo base_url("index.php/equipo_controller/modificar/" . $equipo->id) ?>" class="btn btn-info"><i class="fa fa-edit"></i>Editar producto</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
