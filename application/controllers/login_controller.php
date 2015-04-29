@@ -30,6 +30,7 @@ class Login_Controller extends CI_Controller{
         $this->Usuario->set_email($this->input->post('email'));
         $this->Usuario->set_telefono($this->input->post('telefono'));
         $this->Usuario->set_clave($this->input->post('clave'));
+        $this->Usuario->set_admin(0);
         $this->Usuario->insert();
         redirect(base_url('index.php/login_controller/success'));
     }
