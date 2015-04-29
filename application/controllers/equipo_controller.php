@@ -92,7 +92,7 @@ class Equipo_Controller extends CI_Controller {
         if ($id == null) {
             $id_insertado = $this->Equipo->insert();
             $this->session->set_flashdata('mensaje_equipo_guardado', 'Su equipo ha sido guardado exitosamente');
-            redirect('index.php/equipo_controller/modificar/'.$id);
+            redirect('index.php/equipo_controller/modificar/'.$id_insertado);
             
             
         } else {
