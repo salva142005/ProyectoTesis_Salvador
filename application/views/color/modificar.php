@@ -24,6 +24,14 @@
                 <form role="form" method="post" action="<?php echo base_url('index.php/color_controller/request/'.$color->id); ?>">
                     <div class="box-body">
                         <?php echo validation_errors(); ?>
+                        <?php echo validation_errors(); ?>
+                        <?php $msj= $this->session->flashdata('mensaje');?> 
+                        <?php if (isset($msj) and !empty($msj)):?>
+                        <div class="alert alert-success alert-dismissable">
+                            <i class="fa fa-check-circle"></i>
+                            <?php echo $msj;?>
+                        </div>
+                        <?php endif;?>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca el nombre del color" value="<?php echo htmlentities($color->nombre); ?>">

@@ -91,12 +91,15 @@ class Equipo_Controller extends CI_Controller {
         }
         if ($id == null) {
             $id_insertado = $this->Equipo->insert();
-            redirect(base_url('index.php/equipo_controller/modificar/' . $id_insertado));
+            $this->modificar($id_insertado);
+            $this->session->set_flashdata('mensaje_equipo_guardado', 'Su equipo ha sido guardado exitosamente');
         } else {
             $this->Equipo->set_id($id);
             $this->Equipo->update();
             $this->modificar($id);
+            $this->session->set_flashdata('mensaje_equipo_guardado', 'Su equipo ha sido editado exitosamente');
         }
+        
     }
 
     function subir_foto() {

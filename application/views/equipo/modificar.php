@@ -24,6 +24,14 @@
                 <form enctype="multipart/form-data" role="form" method="post" action="<?php echo base_url('index.php/equipo_controller/request/'.$equipo->id); ?>">
                     <input type="hidden" name="usuario_id" value="<?php echo $equipo->usuario_id; ?>" />
                     <div class="box-body">
+                        <?php $msj= $this->session->flashdata('mensaje_equipo_guardado');?> 
+                        <?php if (isset($msj) and !empty($msj)):?>
+                        <div class="alert alert-success alert-dismissable">
+                            <i class="fa fa-check-circle"></i>
+                            <?php echo $msj;?>
+                        </div>
+                        <?php endif;?>
+                        
                         <div class="form-group">
                             <label for="nombre">Descripcion del equipo</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo htmlentities($equipo->descripcion_equipo); ?>" placeholder="Introduzca el nombre del color">
