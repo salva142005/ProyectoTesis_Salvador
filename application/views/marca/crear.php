@@ -22,10 +22,12 @@
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form role="form" method="post" action="<?php echo base_url('index.php/marca_controller/request'); ?>">
+                    
                     <div class="box-body">
+                        <?php echo validation_errors(); ?>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca el nombre de la marca">
+                            <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo set_value('nombre'); ?>" placeholder="Introduzca el nombre de la marca">
                         </div>
                         
                     </div><!-- /.box-body -->

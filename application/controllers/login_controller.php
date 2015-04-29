@@ -6,6 +6,7 @@ class Login_Controller extends CI_Controller{
             
     function __construct() {
         parent::__construct();
+        $this->form_validation->set_error_delimiters('<div class="alert alert-danger alert-dismissable"><i class="icon fa fa-ban"></i>', '</div>');
     }
     
     function index (){
@@ -21,14 +22,14 @@ class Login_Controller extends CI_Controller{
     }
     function guardar_usuario(){
         $this->load->model('Usuario');
-        if (!$this->form_validation->run()){
+        if (!$this->form_validation->run('valid_usuario')){
             $this->load->view(self::$folder_view.'/registrar_usuario');
             return;
         }
         $this->Usuario->set_nombre($this->input->post('nombre'));
         $this->Usuario->set_email($this->input->post('email'));
         $this->Usuario->set_telefono($this->input->post('telefono'));
-        $this->Usuario->set_clave(md5($this->input->post('clave')));
+        $this->Usuario->set_clave($this->input->post('clave'));
         $this->Usuario->insert();
         redirect(base_url('index.php/login_controller/success'));
     }

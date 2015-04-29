@@ -53,7 +53,7 @@
               <!-- Messages: style can be found in dropdown.less-->
               
               <!-- Notifications: style can be found in dropdown.less -->
-               <?php $id = $this->session->userdata('id');?>
+              <?php $id = $this->session->userdata('id');?>
               <?php if (!empty($id)):?>
               <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -86,12 +86,43 @@
                   <span class="label label-info"><?php echo $this->session->userdata('nro_compras')?></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li class="header">Usted tiene <?php echo $this->session->userdata('nro_compras');?> notificaciones</li>
+                  <li class="header">Usted tiene <?php echo $this->session->userdata('nro_compras');?> Compras Exitosas</li>
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
                       <?php $compras = $this->session->userdata('compras');?>
                       <?php foreach($compras as $c):?>
+                      <li>
+                        <a href="<?php echo base_url('index.php/venta_controller/ver_compra/'.$c->id);?>">
+                            <?php if ($c->estatus==VENTA_CANCELADA):?>
+                            <i class="fa fa-times-circle text-red"></i> 
+                             <?php echo htmlentities('Cancelada -> '.$c->equipo);?>
+                             <?php else:?>   
+                            <i class="fa fa-check-circle text-green"></i>
+                            <?php echo htmlentities('Aprobada -> '.$c->equipo);?>
+                             <?php endif;?>   
+                               
+                        </a>
+                      </li>
+                      <?php endforeach; ?>
+                      
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">Ver todas las compras</a></li>
+                </ul>
+              </li>
+              <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-info"></i>
+                  <span class="label label-info"><?php echo $this->session->userdata('nro_compras_canceladas');?></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">Usted tiene <?php echo $this->session->userdata('nro_compras_canceladas');?> Compras Canceladas</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <?php $compras_canceladas = $this->session->userdata('compras_canceladas');?>
+                      <?php foreach($compras_canceladas as $c):?>
                       <li>
                         <a href="<?php echo base_url('index.php/venta_controller/ver_compra/'.$c->id);?>">
                             <?php if ($c->estatus==VENTA_CANCELADA):?>
@@ -137,7 +168,8 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                        <?php $id = $this->session->userdata('id')?>
+                      <a href="<?php echo base_url("index.php/usuario_controller/modificar/".$id); ?>" class="btn btn-default btn-flat">Perfil</a>
                     </div>
                     <div class="pull-right">
                         <a href="<?php echo base_url("index.php/login_controller/out"); ?>" class="btn btn-default btn-flat">Salir</a>

@@ -36,7 +36,7 @@ class Login extends CI_Model {
     }
 
     function existe_usuario(){
-        $condicion = array('email'=>$this->email, 'clave'=>md5($this->clave));
+        $condicion = array('email'=>$this->email, 'clave'=>$this->clave);
         $usuario = $this->db->get_where(TABLA_USUARIO, $condicion);
         $this->load->model('Venta');
         if ($usuario->num_rows()>0){
@@ -50,6 +50,8 @@ class Login extends CI_Model {
                 'nro_ventas' => $this->Venta->get_numero_ventas(),
                 'compras' => $this->Venta->get_ventas_por_comprador($u->id),
                 'nro_compras' => $this->Venta->get_numero_compras(),
+                'compras_canceladas' => $this->Venta->get_compras_canceladas($u->id),
+                'nro_compras_candeladas' => $this->Venta->get_numero_compras_canceladas(),
             ); 
             if ($u->admin == 1){
                 $usuario_session['admin'] = TRUE;

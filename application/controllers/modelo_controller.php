@@ -7,6 +7,7 @@ class Modelo_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('Modelo');
+         $this->form_validation->set_error_delimiters('<div class="alert alert-danger alert-dismissable"><i class="icon fa fa-ban"></i>', '</div>');
     }
 
     function index() {
@@ -20,6 +21,10 @@ class Modelo_Controller extends CI_Controller {
     }
     
      function request($id = null){
+         if (!$this->form_validation->run('validar_modelo')){
+            $this->crear();
+            return;
+        }
         $this->Modelo->set_nombre($this->input->post('nombre'));
         $this->Modelo->set_marca_id($this->input->post('marca'));
         if ($id == null){

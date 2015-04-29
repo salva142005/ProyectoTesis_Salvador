@@ -17,6 +17,7 @@
         <div class="col-md-6">
             <!-- general form elements -->
             <div class="box box-primary">
+                <?php echo validation_errors(); ?>
                 <div class="box-header">
                     <h3 class="box-title">Datos del equipo</h3>
                 </div><!-- /.box-header -->

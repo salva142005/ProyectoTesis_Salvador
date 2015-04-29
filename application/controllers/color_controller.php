@@ -7,6 +7,7 @@ class Color_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('Color');
+        $this->form_validation->set_error_delimiters('<div class="alert alert-danger alert-dismissable"><i class="icon fa fa-ban"></i>', '</div>');
     }
     
     function index(){
@@ -29,6 +30,10 @@ class Color_Controller extends CI_Controller {
     }
     
     function request($id = null){
+        if (!$this->form_validation->run('validar_color')){
+            $this->crear();
+            return;
+        }
         $this->Color->set_nombre($this->input->post('nombre'));
         if ($id == null){
             $this->Color->insert(); 

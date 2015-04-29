@@ -23,6 +23,7 @@
                 <!-- form start -->
                 <form role="form" method="post" action="<?php echo base_url('index.php/marca_controller/request/'.$marca->id); ?>">
                     <div class="box-body">
+                        <?php echo validation_errors(); ?>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Edtie el nombre de la marca" value="<?php echo htmlentities($marca->nombre);?>">

@@ -7,6 +7,7 @@ class Equipo_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('Equipo');
+         $this->form_validation->set_error_delimiters('<div class="alert alert-danger alert-dismissable"><i class="icon fa fa-ban"></i>', '</div>');
     }
 
     function index() {
@@ -64,8 +65,12 @@ class Equipo_Controller extends CI_Controller {
     }
 
     function request($id = null) {
-        if(!$this->form_validation->run('validacion_equipos')){
-            echo 'error de validacion revisar campos';
+        if(!$this->form_validation->run('validacion_equipo')){
+            if ($id==null){
+                $this->crear();
+            } else {
+                $this->modificar($id);
+            }
             return;
         }
         $this->Equipo->set_nombre($this->input->post('nombre'));

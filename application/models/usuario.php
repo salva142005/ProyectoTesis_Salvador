@@ -8,11 +8,12 @@ class Usuario extends CI_Model {
     var $telefono;
     var $clave;
     var $creado;
+    var $admin;
     var $modificado;
     static $tabla = 'usuarios';
 
     function __construct() {
-        parent::__construct();
+        parent::__construct(); 
     }
 
     function get_id() {
@@ -37,6 +38,9 @@ class Usuario extends CI_Model {
 
     function get_creado() {
         return $this->creado;
+    }
+    function get_admin() {
+        return $this->admin;
     }
 
     function get_modificado() {
@@ -66,6 +70,9 @@ class Usuario extends CI_Model {
     function set_creado($creado) {
         $this->creado = $creado;
     }
+    function set_admin($admin) {
+        $this->admin = $admin;
+    }
 
     function set_modificado($modificado) {
         $this->modificado = $modificado;
@@ -75,9 +82,15 @@ class Usuario extends CI_Model {
         $this->db->set($this);
         $this->db->insert(self::$tabla);
     }
-
+    
+    function get_usuario_x_id($id){
+        return $this->db->get_where(self::$tabla, array('id'=>$id))->row();
+    }
+    
     function update() {
-        
+        $this->db->set($this);
+        $this->db->where('id', $this->id);
+        $this->db->update(self::$tabla);
     }
 
     function delete() {

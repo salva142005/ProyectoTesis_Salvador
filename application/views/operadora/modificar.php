@@ -23,6 +23,7 @@
                 <!-- form start -->
                 <form role="form" method="post" action="<?php echo base_url('index.php/operadora_controller/request/'.$operadora->id); ?>">
                     <div class="box-body">
+                         <?php echo validation_errors(); ?>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca el nombre de la operadora" value="<?php echo htmlentities($operadora->nombre); ?>">

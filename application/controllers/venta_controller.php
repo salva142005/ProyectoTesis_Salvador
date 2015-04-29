@@ -10,7 +10,7 @@ class Venta_Controller extends CI_Controller {
         $this->load->model('Equipo');
     }
     
-    function index(){}
+    function index(){echo 'hola';}
     
     function registrar_venta(){
         $equipo_id = $this->input->post('equipo_id');
@@ -30,6 +30,11 @@ class Venta_Controller extends CI_Controller {
         $data['venta']=$this->Venta->get_venta_x_id($id);
         $data['equipo'] = $this->Equipo->get_equipos($data['venta']->equipo_id);
         $this->load->view(self::$view_folder.'/ver_venta', $data);
+    }
+    function ver_compra($id){
+        $data['venta']=$this->Venta->get_venta_exitosa_x_id($id);
+        $data['equipo'] = $this->Equipo->get_equipos($data['venta']->equipo_id);
+        $this->load->view(self::$view_folder.'/ver_venta_exitosa', $data);
     }
     
     function aprobar_venta($id){

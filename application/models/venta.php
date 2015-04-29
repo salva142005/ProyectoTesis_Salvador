@@ -24,10 +24,12 @@ class Venta extends CI_Model {
     static $tabla = 'ventas';
     static $numero_ventas = 0;
     static $numero_compras = 0;
-
+    static $numero_compras_caceladas = 0;
+    const TABLA_USUARIO = 'usuarios';
+    
     function __construct() {
         parent::__construct();
-        define('TABLA_USUARIO', 'usuarios');
+        
     }
 
     function get_id() {
@@ -101,6 +103,9 @@ class Venta extends CI_Model {
     function get_numero_compras(){
         return self::$numero_compras;
     }
+    function get_numero_compras_canceladas(){
+        return self::$numero_compras_caceladas;
+    }
 
     function aprobar($id) {
         $this->id = $id;
@@ -135,9 +140,23 @@ class Venta extends CI_Model {
         $this->db->join('equipos c', 'a.equipo_id = c.id');
         $cond = array('comprador_id' => $comprador_id, 'estatus' => VENTA_EXITOSA);
         $this->db->where($cond);
-        $this->db->or_where(array('estatus' => VENTA_CANCELADA));
+        //$this->db->or_where(array('estatus' => VENTA_CANCELADA));
         $ventas_obj = $this->db->get();
         self::$numero_compras = $ventas_obj->num_rows();
+        return $ventas_obj->result();
+    }
+    
+    function get_compras_canceladas($comprador_id) {
+        $select = "a.id, a.comprador_id, a.vendedor_id, a.equipo_id, a.estatus, "
+                . "b.nombre comprador, b.email, b.telefono, c.nombre equipo";
+        $this->db->select($select);
+        $this->db->from('ventas a ');
+        $this->db->join('usuarios b', 'a.comprador_id = b.id');
+        $this->db->join('equipos c', 'a.equipo_id = c.id');
+        $cond = array('comprador_id' => $comprador_id, 'estatus' => VENTA_CANCELADA);
+        $this->db->where($cond);
+        $ventas_obj = $this->db->get();
+        self::$numero_compras_caceladas = $ventas_obj->num_rows();
         return $ventas_obj->result();
     }
 
@@ -149,6 +168,16 @@ class Venta extends CI_Model {
         $this->db->join('usuarios b', 'a.comprador_id = b.id');
         $this->db->join('equipos c', 'a.equipo_id = c.id');
         $this->db->where('a.id', $id);
+        return $this->db->get()->row();
+    }
+    function get_venta_exitosa_x_id($id) {
+        $select = "a.id, a.comprador_id, a.vendedor_id, a.equipo_id, a.estatus, "
+                . "b.nombre comprador, b.email, b.telefono, c.nombre equipo, c.id equipo_id";
+        $this->db->select($select);
+        $this->db->from('ventas a ');
+        $this->db->join('usuarios b', 'a.comprador_id = b.id');
+        $this->db->join('equipos c', 'a.equipo_id = c.id');
+        $this->db->where(array('a.id'=> $id, 'a.estatus'=>VENTA_EXITOSA));
         return $this->db->get()->row();
     }
 
@@ -171,7 +200,7 @@ class Venta extends CI_Model {
     function __destruct() {
         $usuario_id = $this->session->userdata('id');
         $condicion = array('id' => $usuario_id);
-        $usuario = $this->db->get_where(TABLA_USUARIO, $condicion);
+        $usuario = $this->db->get_where(self::TABLA_USUARIO, $condicion);
         $this->load->model('Venta');
         $u = $usuario->row();
         $usuario_sess = array(
@@ -179,6 +208,8 @@ class Venta extends CI_Model {
             'nro_ventas' => $this->Venta->get_numero_ventas(),
             'compras' => $this->Venta->get_ventas_por_comprador($u->id),
             'nro_compras' => $this->Venta->get_numero_compras(),
+            'compras_canceladas' => $this->Venta->get_compras_canceladas($u->id),
+            'nro_compras_candeladas' => $this->Venta->get_numero_compras_canceladas(),
         );
 
         $this->session->set_userdata($usuario_sess);

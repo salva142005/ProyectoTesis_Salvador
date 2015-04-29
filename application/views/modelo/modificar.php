@@ -23,6 +23,7 @@
                 <!-- form start -->
                 <form role="form" method="post" action="<?php echo base_url('index.php/modelo_controller/request/'.$modelo->id); ?>">
                     <div class="box-body">
+                        <?php echo validation_errors(); ?>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca el nombre del modelo" value="<?php echo htmlentities($modelo->nombre);?>">
@@ -33,7 +34,9 @@
                                 <option value="">--Seleccione la marca--</option>
                                 <?php foreach($marcas as $marca):?>
                                 <?php $select = ($marca->id == $modelo->marca_id) ? 'selected="selected"':'';?>
-                                <option <?php echo $select?> value="<?php echo $marca->id; ?>"><?php echo htmlentities($marca->nombre);?></option>
+                                <option <?php echo $select?> value="<?php echo $marca->id; ?>" <?php echo set_select('marca', $marca->id); ?>>
+                                    <?php echo htmlentities($marca->nombre);?>
+                                </option>
                                 <?php endforeach;?>
                             </select>
                         </div>

@@ -27,7 +27,10 @@
 
 
         <a href="#">Olvidé mi clave</a><br>
-        <a href="<?php echo base_url('index.php/login_controller/registrar_usuario'); ?>" class="text-center">Registrar nuevo usuario</a>
+        <a href="<?php echo base_url('index.php/login_controller/registrar_usuario'); ?>" class="text-center">
+            Registrar nuevo usuario
+        </a><br>
+        <a href="<?php echo base_url(); ?>" class="text-center"> Ir al Inicio</a>
 
     </div><!-- /.login-box-body -->
 </div><!-- /.login-box -->
