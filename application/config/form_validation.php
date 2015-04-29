@@ -92,7 +92,7 @@ $config = array(
         array(
             'field' => 'precio',
             'label' => 'Precio del equipo',
-            'rules' => 'required|numeric|max_length[13]'
+            'rules' => 'required|numeric|max_length[13]',
         ),
         array(
             'field' => 'cantidad',
@@ -102,6 +102,27 @@ $config = array(
     ),
    
     'validar_operadora' =>
+    array(
+        array(
+            'field' => 'nombre',
+            'label' => 'Nombre De La Marca',
+            'rules' => 'required|max_length[60]'
+        ),
+    ),
+    'validacion_modelo' =>
+    array(
+        array(
+            'field' => 'nombre',
+            'label' => 'Nombre Del Modelo',
+            'rules' => 'required|max_length[45]'
+        ),
+        array(
+            'field' => 'marca',
+            'label' => 'Marca Del Modelo',
+            'rules' => 'required|max_length[60]'
+        ),
+    ),
+    'validacion_operadora' =>
     array(
         array(
             'field' => 'nombre',
