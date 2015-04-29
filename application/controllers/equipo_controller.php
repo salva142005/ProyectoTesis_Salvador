@@ -91,13 +91,15 @@ class Equipo_Controller extends CI_Controller {
         }
         if ($id == null) {
             $id_insertado = $this->Equipo->insert();
-            $this->modificar($id_insertado);
             $this->session->set_flashdata('mensaje_equipo_guardado', 'Su equipo ha sido guardado exitosamente');
+            $this->modificar($id_insertado);
+            
         } else {
             $this->Equipo->set_id($id);
             $this->Equipo->update();
-            $this->modificar($id);
             $this->session->set_flashdata('mensaje_equipo_guardado', 'Su equipo ha sido editado exitosamente');
+            $this->modificar($id);
+            
         }
         
     }
