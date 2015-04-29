@@ -15,6 +15,9 @@
     <div class="row">
         <!-- left column -->
         <div class="col-md-6">
+            <a class="btn btn-success" href="<?php echo base_url();?>">Regresar</a>
+            <br>
+            <br>
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
@@ -24,6 +27,7 @@
                 <form enctype="multipart/form-data" role="form" method="post" action="<?php echo base_url('index.php/equipo_controller/request/'.$equipo->id); ?>">
                     <input type="hidden" name="usuario_id" value="<?php echo $equipo->usuario_id; ?>" />
                     <div class="box-body">
+                        
                         <?php $msj= $this->session->flashdata('mensaje_equipo_guardado');?> 
                         <?php if (isset($msj) and !empty($msj)):?>
                         <div class="alert alert-success alert-dismissable">
@@ -108,8 +112,10 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a class="btn btn-success" href="<?php echo base_url();?>">Regresar</a>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>
