@@ -46,6 +46,7 @@
                        <a href="<?php echo base_url('index.php/equipo_controller/detalle/'.$e->id);?>" class="btn btn-warning">Ver detalles</a>
                         <?php if ($e->usuario_id == $this->session->userdata('id')) :?>
                         <a href="<?php echo base_url("index.php/equipo_controller/modificar/".$e->id) ?>" class="btn btn-success">Editar producto</a>
+                        <a href="<?php echo base_url("index.php/equipo_controller/eliminar/".$e->id) ?>" class="btn btn-danger">Eliminar</a>
                         <?php endif;?>
                     </div>
                 </div><!-- /.box-body -->

@@ -6,7 +6,7 @@
             <div class="pull-left image">
                  <?php $id = $this->session->userdata('id');?>
                 <?php if (!empty($id)):?>
-                <img src="<?php echo base_url('assets'); ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                <!--<img src="<?php echo base_url('assets'); ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />-->
                  <?php endif;?>
             </div>
             <div class="pull-left info">

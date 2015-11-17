@@ -81,6 +81,7 @@ class Equipo_Controller extends CI_Controller {
         $this->Equipo->set_precio($this->input->post('precio'));
         $this->Equipo->set_cantidad($this->input->post('cantidad'));
         $this->Equipo->set_estado($this->input->post('estado'));
+        $this->Equipo->set_activo(1);
 
         $upload_data = $this->subir_foto();
         if ($upload_data) {
@@ -128,9 +129,22 @@ class Equipo_Controller extends CI_Controller {
     }
     
     function eliminar($id) {
-        $this->Equipo->set_id($id);
-        $this->Equipo->delete();
-        $this->listar();
+       
+       
+         if($this->Equipo->desactivar($id)){
+            $this->session->set_flashdata('mensaje_equipo_eliminado', 'Su equipo ha sido desactivado');
+            redirect('index.php');
+         }
+        
+        
+        $data = array(
+            "titulo" => 'Error',
+            "actionRedirect" => 'equipo_controller/listar',
+            "mensaje" => 'No se puede desacctivar este equipo'
+        );
+        $this->load->view("error_views", $data);
+        
+         
     }
 
 }

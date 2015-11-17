@@ -192,6 +192,16 @@ class Venta extends CI_Model {
         $this->db->where('id', $this->id);
         $this->db->update(self::$tabla);
     }
+    
+    function reporte($filtro = array()){
+        $this->db->select("nombre_comprador, email_comprador, nombre_vendedor, email_vendedor, nombre_equipo, nombre_modelo, nombre_marca, nombre_color, precio, creado");
+        $this->db->from("vista_ventas ");
+        if (!empty($filtro)){
+            $this->db->where($filtro);
+        }
+         return $this->db->get()->result();
+        // echo $this->db->last_query();
+    }
 
     function delete() {
         

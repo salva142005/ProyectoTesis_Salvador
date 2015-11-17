@@ -87,7 +87,13 @@ class Modelo extends CI_Model {
     }
 
     function delete() {
-        $this->db->delete(self::$tabla, array('id' => $this->id));
+        try{
+            $this->db->delete(self::$tabla, array('id' => $this->id));
+            return true;
+        }  catch (Exception $ex){
+            return false;
+        }
+        
     }
 
 }

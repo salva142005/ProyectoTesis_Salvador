@@ -13,6 +13,7 @@ class Venta_Controller extends CI_Controller {
     function index(){echo 'hola';}
     
     function registrar_venta(){
+        error_reporting(~E_WARNING);
         $equipo_id = $this->input->post('equipo_id');
         $this->Venta->set_comprador_id($this->input->post('comprador_id'));
         $this->Venta->set_vendedor_id($this->input->post('vendedor_id'));
@@ -27,11 +28,13 @@ class Venta_Controller extends CI_Controller {
     }
     
     function ver_venta($id){
+        error_reporting(~E_WARNING);
         $data['venta']=$this->Venta->get_venta_x_id($id);
         $data['equipo'] = $this->Equipo->get_equipos($data['venta']->equipo_id);
         $this->load->view(self::$view_folder.'/ver_venta', $data);
     }
     function ver_compra($id){
+        error_reporting(~E_WARNING);
         $data['venta']=$this->Venta->get_venta_exitosa_x_id($id);
         $data['equipo'] = $this->Equipo->get_equipos($data['venta']->equipo_id);
         $this->load->view(self::$view_folder.'/ver_venta_exitosa', $data);
@@ -48,6 +51,30 @@ class Venta_Controller extends CI_Controller {
         
         $this->Equipo->aumetar_cantidad($venta->equipo_id);
         redirect(base_url());
+    }
+    
+    function vista_reporte(){
+        error_reporting(~E_WARNING);
+        $data["titulo"] = "Reporte de ventas";
+        $usuario = $this->input->post("usuario");
+        $fecha_ini = $this->input->post("fecha_inicio");
+        $fecha_fin = $this->input->post("fecha_fin");
+        if ($this->input->post("usuario") == "" && $this->input->post("fecha_inicio") == "" && $this->input->post("fecha_fin") ==""){
+            $this->load->view(self::$view_folder."/reporte", $data);
+            return;
+        }
+        $filtro = array();
+        if ($usuario != ""){
+            $filtro["email_vendedor"] = $usuario;
+        }
+        if ($fecha_ini != ""){
+            $filtro["creado >="] = $fecha_ini;
+        }
+        if ($fecha_fin != ""){
+            $filtro["creado <="] = $fecha_fin;
+        }
+        $data["ventas"] = $this->Venta->reporte($filtro);
+        $this->load->view(self::$view_folder."/reporte", $data);
     }
     
     

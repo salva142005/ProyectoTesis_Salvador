@@ -45,8 +45,21 @@ class Color_Controller extends CI_Controller {
     }
     
     function eliminar($id){
-         $this->Color->set_id($id);
-         $this->Color->delete();
-         $this->listar();
+        
+            $this->Color->set_id($id);
+         if($this->Color->delete()){
+              $this->listar();
+              return;
+         }
+        
+        
+        $data = array(
+            "titulo" => 'Error',
+            "actionRedirect" => 'color_controller/listar',
+            "mensaje" => 'No se puede eliminar este color esta siendo usado'
+        );
+        $this->load->view("error_views", $data);
+        
+         
     } 
 }

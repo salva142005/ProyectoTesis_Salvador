@@ -55,6 +55,8 @@ class Login extends CI_Model {
             ); 
             if ($u->admin == 1){
                 $usuario_session['admin'] = TRUE;
+            } else {
+                $usuario_session['admin'] = FALSE;
             }
             $this->session->set_userdata($usuario_session);
             return TRUE;

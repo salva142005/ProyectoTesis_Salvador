@@ -13,6 +13,7 @@ class Equipo extends CI_Model {
     var $estado;
     var $cantidad;
     var $imagen;
+    var $activo;
     var $creado;
     var $modificado;
     static $tabla = 'equipos';
@@ -59,6 +60,9 @@ class Equipo extends CI_Model {
 
     function get_imagen() {
         return $this->imagen;
+    }
+    function get_activo() {
+        return $this->activo;
     }
 
     function get_creado() {
@@ -109,6 +113,10 @@ class Equipo extends CI_Model {
         $this->imagen = $imagen;
     }
 
+    function set_activo($activo) {
+        $this->activo = $activo;
+    }
+
     function set_creado($creado) {
         $this->creado = $creado;
     }
@@ -125,7 +133,7 @@ class Equipo extends CI_Model {
         $select = "u.id usuario_id, u.nombre nombre_usuario, u.email usuario_email, u.telefono usuario_telefono,
                 c.nombre color_equipo, mar.nombre marca, model.nombre modelo, e.nombre descripcion_equipo, 
                 e.operadora_id, e.color_id, e.operadora_id,e.precio precio_equipo, e.estado estado_equipo,
-                o.nombre operadora, e.imagen, e.modelo_id, e.id, e.cantidad";
+                o.nombre operadora, e.imagen, e.modelo_id, e.id, e.cantidad, e.activo";
         
         $this->db->select($select);
         $this->db->from(' equipos e ');
@@ -143,6 +151,9 @@ class Equipo extends CI_Model {
         } else if($busqueda){
             $this->db->like("e.nombre", $busqueda);
             return $this->db->get();
+        } else {
+            $this->db->where("e.activo", 1);
+            //return $this->db->get()->row();
         }
         return $this->db->get()->result();
     }
@@ -176,9 +187,19 @@ class Equipo extends CI_Model {
         $this->db->where('id', $this->id);
         $this->db->update(self::$tabla);
     }
-
+    function desactivar($id){
+        $this->db->where('id', $id);
+        return $this->db->update(self::$tabla, array('activo' => 0));
+        
+    }
+    function activar($id){
+        $this->db->where('id', $id);
+        return $this->db->update(self::$tabla, array('activo' => 1));
+        
+    }
     function delete() {
         
     }
-
+    
+    
 }
