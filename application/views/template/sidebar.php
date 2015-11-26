@@ -58,7 +58,7 @@
                 </a>
                  <ul class="treeview-menu">
                     <li class=""><a href="<?php echo base_url('index.php/servicio_controller/crear') ?>"><i class="fa fa-circle-o"></i> Nuevo servicio</a></li>
-                    <li class=""><a href="<?php echo base_url('index.php/servicio_controller/listar_servicios_del_usuario') ?>"><i class="fa fa-circle-o"></i> Mis servicios</a></li>
+                    <li class=""><a href="<?php echo base_url('index.php/servicio_controller/listar') ?>"><i class="fa fa-circle-o"></i> Mis servicios</a></li>
                     
                 </ul>
             </li>
@@ -91,7 +91,7 @@
                     <ul class="treeview-menu">
                         <?php if (!empty($admin)):?>
                         <li><a href="<?php echo base_url('index.php/venta_controller/vista_reporte') ?>"><i class="fa fa-circle-o"></i> Reporte de ventas generales</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Reporte de visitas</a></li>
+                        <li><a href="<?php echo base_url('index.php/visitas_controller') ?>"><i class="fa fa-circle-o"></i> Reporte de visitas</a></li>
                         <?php else: ?>
                         <li><a href="<?php echo base_url('index.php/venta_controller/vista_reporte') ?>"><i class="fa fa-circle-o"></i> Reporte de ventas</a></li>
                         <?php endif; ?>
