@@ -12,12 +12,12 @@
  * @author Raúl
  */
 class Login extends CI_Model {
-    private $email;
-    private $clave;
+    var $email;
+    var $clave;
     
     function __construct() {
         parent::__construct();
-        define('TABLA_USUARIO','usuarios');
+        //define('TABLA_USUARIO','usuarios');
     }
     function get_email() {
         return $this->email;
@@ -36,9 +36,9 @@ class Login extends CI_Model {
     }
 
     function existe_usuario(){
-        $condicion = array('email'=>$this->email, 'clave'=>$this->clave);
-        $usuario = $this->db->get_where(TABLA_USUARIO, $condicion);
-        $this->load->model('Venta');
+            $condicion = array('email'=>$this->get_email(), 'clave'=>$this->get_clave());
+            $usuario = $this->db->get_where('usuarios', $condicion);
+            $this->load->model('Venta');
         if ($usuario->num_rows()>0){
             $u = $usuario->row();
             $usuario_session = array(
@@ -53,18 +53,18 @@ class Login extends CI_Model {
                 'compras_canceladas' => $this->Venta->get_compras_canceladas($u->id),
                 'nro_compras_candeladas' => $this->Venta->get_numero_compras_canceladas(),
             ); 
-            if ($u->admin == 1){
+            
+            if ($u->admin == '1'){
                 $usuario_session['admin'] = TRUE;
             } else {
                 $usuario_session['admin'] = FALSE;
             }
+            
             $this->session->set_userdata($usuario_session);
+            
             return TRUE;
         }
-        return FALSE;
-    }
-   
-    
-   
+        return FALSE; 
+    } 
     
 }

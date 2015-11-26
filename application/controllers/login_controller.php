@@ -35,10 +35,10 @@ class Login_Controller extends CI_Controller{
         redirect(base_url('index.php/login_controller/success'));
     }
     
-    function validar_usuario(){
+    function validar_usuario(){// error_reporting(~E_WARNING);
         $this->load->model('Login');
-        $this->Login->set_email($this->input->post('email'));
-        $this->Login->set_clave($this->input->post('clave'));
+        $this->Login->set_email(trim($this->input->post('email', TRUE)));
+        $this->Login->set_clave(trim($this->input->post('clave', TRUE)));
         if ($this->Login->existe_usuario()){
             redirect(base_url('index.php/home_controller/'));
         }else {

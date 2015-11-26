@@ -58,7 +58,7 @@
               <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-money"></i>
-                  <span class="label label-warning"><?php echo $this->session->userdata('nro_ventas')?></span>
+                  <span style="font-size: 15px;" class="label label-warning"><?php echo $this->session->userdata('nro_ventas')?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li class="header">Usted tiene <?php echo $this->session->userdata('nro_ventas');?> venta(s)</li>
@@ -76,14 +76,14 @@
                       
                     </ul>
                   </li>
-                  <li class="footer"><a href="#">Ver todas las ventas</a></li>
+                  <!--<li class="footer"><a href="#">Ver todas las ventas</a></li>-->
                 </ul>
               </li>
 <!--              compras-->
               <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-info"></i>
-                  <span class="label label-info"><?php echo $this->session->userdata('nro_compras')?></span>
+                  <span style="font-size: 15px;" class="label label-info"><?php echo $this->session->userdata('nro_compras')?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li class="header">Usted tiene <?php echo $this->session->userdata('nro_compras');?> Compras Exitosas</li>

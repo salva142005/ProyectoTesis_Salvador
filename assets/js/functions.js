@@ -6,5 +6,10 @@ $(function (){
             $('#wrapper_modelos').html(response);
         });
     });
+    
+    $('.datepicker').datepicker({
+        format: 'yyyy/mm/dd',
+        language: 'es'
+    });
 });
 

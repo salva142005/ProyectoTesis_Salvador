@@ -80,6 +80,24 @@
                 </ul>
             </li>
             <?php endif;?>
+            <?php $id = $this->session->userdata('id');?>
+            <?php if (!empty($id)):?>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-files-o"></i>
+                        <span>Reportes</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <?php if (!empty($admin)):?>
+                        <li><a href="<?php echo base_url('index.php/venta_controller/vista_reporte') ?>"><i class="fa fa-circle-o"></i> Reporte de ventas generales</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i> Reporte de visitas</a></li>
+                        <?php else: ?>
+                        <li><a href="<?php echo base_url('index.php/venta_controller/vista_reporte') ?>"><i class="fa fa-circle-o"></i> Reporte de ventas</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </li>
+            <?php endif; ?>
 <!--            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-files-o"></i>

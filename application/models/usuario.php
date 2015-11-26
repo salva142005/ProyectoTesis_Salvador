@@ -87,6 +87,10 @@ class Usuario extends CI_Model {
         return $this->db->get_where(self::$tabla, array('id'=>$id))->row();
     }
     
+    function get_all(){
+        return $this->db->get(self::$tabla)->result();
+    }
+    
     function update() {
         $this->db->set($this);
         $this->db->where('id', $this->id);

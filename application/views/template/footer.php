@@ -24,7 +24,9 @@
     <!-- daterangepicker -->
     <script src="<?php echo base_url('assets');?>/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <!-- datepicker -->
+   
     <script src="<?php echo base_url('assets');?>/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+     <script src="<?php echo base_url('assets');?>/plugins/datepicker/locales/bootstrap-datepicker.es.js" type="text/javascript"></script>
     <!-- Bootstrap WYSIHTML5 -->
     <!--<script src="<?php echo base_url('assets');?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>-->
     <!-- iCheck -->

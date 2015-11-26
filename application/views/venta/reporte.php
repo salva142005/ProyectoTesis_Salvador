@@ -15,22 +15,50 @@
     
         <form role="form" method="post" action="<?php echo base_url('index.php/venta_controller/vista_reporte'); ?>">
             <div class="row">  
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
-                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Introduzca el correo">
+                            <?php if($this->session->userdata('admin')):?>
+                                <select class="form-control" name="usuario" id="usuario">
+                                    <option value="">--Seleccione el usuario--</option>
+                                    <?php foreach($usuarios as $u):?>
+                                    <option value="<?php echo $u->email; ?>">
+                                        <?php echo htmlentities($u->nombre . ' : '. $u->email);?>
+                                    </option>
+                                    <?php endforeach;?>
+                                </select>
+                            <?php else:?>
+                                <select class="form-control" name="usuario" id="usuario">
+                                    <option value="<?php echo $this->session->userdata('email'); ?>" >
+                                        <?php echo htmlentities($this->session->userdata('nombre'). ' : '. $this->session->userdata('email'));?>
+                                    </option>
+                                </select>
+                            <?php endif;?>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="fecha_inicio">Fecha desde</label>
-                        <input type="text" class="form-control" name="fecha_inicio" id="fecha_inicio" placeholder="Introduzca el correo">
+                        <input type="text" class="form-control datepicker" name="fecha_inicio" data-date-format="yyyy/mm/dd" id="fecha_inicio" placeholder="fecha desde">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="fecha_fin">Fecha hasta</label>
-                        <input type="text" class="form-control" name="fecha_fin" id="fecha_fin" placeholder="Introduzca el correo">
+                        <input type="text" class="form-control datepicker" name="fecha_fin" data-date-format="yyyy/mm/dd"  id="fecha_fin" placeholder="fecha hasta">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="estatus">Estatus de ventas</label>
+                        <select class="form-control" name="estatus_ventas" id="estatus_ventas">
+                            <option value="">--Seleccione el usuario--</option>
+                            <?php foreach($estatus_ventas as $key => $item):?>
+                            <option value="<?php echo $key; ?>">
+                                <?php echo htmlentities($item);?>
+                            </option>
+                            <?php endforeach;?>
+                        </select>
                     </div>
                 </div>
             </div>

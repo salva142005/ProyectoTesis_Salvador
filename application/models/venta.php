@@ -25,7 +25,7 @@ class Venta extends CI_Model {
     static $numero_ventas = 0;
     static $numero_compras = 0;
     static $numero_compras_caceladas = 0;
-    const TABLA_USUARIO = 'usuarios';
+    //const TABLA_USUARIO = 'usuarios';
     
     function __construct() {
         parent::__construct();
@@ -207,22 +207,22 @@ class Venta extends CI_Model {
         
     }
 
-    function __destruct() {
-        $usuario_id = $this->session->userdata('id');
-        $condicion = array('id' => $usuario_id);
-        $usuario = $this->db->get_where(self::TABLA_USUARIO, $condicion);
-        $this->load->model('Venta');
-        $u = $usuario->row();
-        $usuario_sess = array(
-            'ventas' => $this->Venta->get_ventas_x_vendedor($u->id),
-            'nro_ventas' => $this->Venta->get_numero_ventas(),
-            'compras' => $this->Venta->get_ventas_por_comprador($u->id),
-            'nro_compras' => $this->Venta->get_numero_compras(),
-            'compras_canceladas' => $this->Venta->get_compras_canceladas($u->id),
-            'nro_compras_candeladas' => $this->Venta->get_numero_compras_canceladas(),
-        );
-
-        $this->session->set_userdata($usuario_sess);
-    }
+//    function __destruct() {
+//        $usuario_id = $this->session->userdata('id');
+//        $condicion = array('id' => $usuario_id);
+//        $usuario = $this->db->get_where("usuarios", $condicion);
+//        $this->load->model('Venta');
+//        $u = $usuario->row();
+//        $usuario_sess = array(
+//            'ventas' => $this->Venta->get_ventas_x_vendedor($u->id),
+//            'nro_ventas' => $this->Venta->get_numero_ventas(),
+//            'compras' => $this->Venta->get_ventas_por_comprador($u->id),
+//            'nro_compras' => $this->Venta->get_numero_compras(),
+//            'compras_canceladas' => $this->Venta->get_compras_canceladas($u->id),
+//            'nro_compras_candeladas' => $this->Venta->get_numero_compras_canceladas(),
+//        );
+//
+//        $this->session->set_userdata($usuario_sess);
+//    }
 
 }

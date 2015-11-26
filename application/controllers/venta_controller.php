@@ -49,16 +49,19 @@ class Venta_Controller extends CI_Controller {
         $this->Venta->denegar($id);
         $venta=$this->Venta->get_venta_x_id($id);
         
-        $this->Equipo->aumetar_cantidad($venta->equipo_id);
+        $this->Equipo->aumentar_cantidad($venta->equipo_id);
         redirect(base_url());
     }
     
     function vista_reporte(){
-        error_reporting(~E_WARNING);
+        //error_reporting(~E_WARNING);
         $data["titulo"] = "Reporte de ventas";
+        $data["usuarios"] = $this->_get_usuarios();
+        $data["estatus_ventas"] = $this->_get_esttatus_ventas();
         $usuario = $this->input->post("usuario");
         $fecha_ini = $this->input->post("fecha_inicio");
         $fecha_fin = $this->input->post("fecha_fin");
+        $estatus_ventas = $this->input->post("estatus_ventas");
         if ($this->input->post("usuario") == "" && $this->input->post("fecha_inicio") == "" && $this->input->post("fecha_fin") ==""){
             $this->load->view(self::$view_folder."/reporte", $data);
             return;
@@ -67,15 +70,32 @@ class Venta_Controller extends CI_Controller {
         if ($usuario != ""){
             $filtro["email_vendedor"] = $usuario;
         }
-        if ($fecha_ini != ""){
-            $filtro["creado >="] = $fecha_ini;
+        if ($fecha_ini == $fecha_fin){
+           $filtro["CAST(creado AS DATE) ="] = $fecha_ini;
+        } else {
+            if ($fecha_ini != ""){
+                $filtro["creado >="] = $fecha_ini;
+            }
+            if ($fecha_fin != ""){
+                $filtro["creado <="] = $fecha_fin;
+            }
         }
-        if ($fecha_fin != ""){
-            $filtro["creado <="] = $fecha_fin;
-        }
+        $filtro['estatus ='] = $estatus_ventas;
         $data["ventas"] = $this->Venta->reporte($filtro);
         $this->load->view(self::$view_folder."/reporte", $data);
     }
     
+    function _get_usuarios(){
+        $this->load->model("Usuario");
+        return $this->Usuario->get_all();
+    }
+    
+    function _get_esttatus_ventas(){
+        return [
+                '1' => 'Ventas Aprobadas',
+                '0' => 'Ventas Rechazadas',
+                '2' => 'Ventas por Aprobar'
+            ];
+    }
     
 }
